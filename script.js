@@ -98,13 +98,50 @@ function updateBasket() {
     document.getElementById("total").innerText = total.toFixed(2);
 }
 
-document.getElementById("checkout").addEventListener("click", function(){
+document.getElementById("checkout").addEventListener("click", function () {
 
-    if(basket.length===0){
+    if (basket.length === 0) {
         alert("Your basket is empty.");
         return;
     }
 
-    alert("Checkout page coming next!");
+    const name = document.getElementById("customerName").value;
+    const phone = document.getElementById("customerPhone").value;
+    const time = document.getElementById("collectionTime").value;
+    const notes = document.getElementById("notes").value;
+
+    let order = "";
+
+    basket.forEach(item => {
+        order += `${item.qty} x ${item.name} - £${(item.qty * item.price).toFixed(2)}\n`;
+    });
+
+    const total = document.getElementById("total").innerText;
+
+    const body =
+`MILTON CHIPPY ONLINE ORDER
+
+Customer: ${name}
+
+Phone: ${phone}
+
+Collection Time: ${time}
+
+-------------------------
+
+${order}
+
+-------------------------
+
+TOTAL £${total}
+
+Notes:
+
+${notes}
+
+Collection Only - Pay In Store`;
+
+    window.location.href =
+`mailto:Ranvirkaurbassi@gmail.com?subject=Milton Chippy Online Order&body=${encodeURIComponent(body)}`;
 
 });
