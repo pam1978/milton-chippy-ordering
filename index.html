@@ -1,67 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Milton Chippy</title>
-
-<link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.json">
-
-<meta name="theme-color" content="#b30000">
-</head>
-
-<body>
-
-<header class="header">
-    <h1>🍟 Milton Chippy</h1>
-    <p>Collection Only • Pay In Store</p>
-</header>
-
-<nav class="categories">
-    <button onclick="showCategory('fish')">Fish & Chips</button>
-    <button onclick="showCategory('burgers')">Burgers</button>
-    <button onclick="showCategory('kebabs')">Kebabs</button>
-    <button onclick="showCategory('chicken')">Chicken</button>
-    <button onclick="showCategory('pies')">Pies</button>
-    <button onclick="showCategory('extras')">Extras</button>
-    <button onclick="showCategory('desserts')">Desserts</button>
-    <button onclick="showCategory('glutenfree')">Gluten Free</button>
-    <button onclick="showCategory('vegan')">Vegan</button>
-</nav>
-
-<main>
-
-<section id="menu">
-<h2>Welcome</h2>
-<p>Please choose a category above.</p>
-</section>
-
 <section id="basket">
-<h2>🛒 Your Basket</h2>
 
-<div id="basketItems">
-Your basket is empty.
-</div>
+<h2>🛒 Your Order</h2>
+
+<div id="basketItems"></div>
 
 <h3>Total £<span id="total">0.00</span></h3>
 
+<input
+id="customerName"
+type="text"
+placeholder="Your Name">
+
+<input
+id="customerPhone"
+type="tel"
+placeholder="Phone Number">
+
+<input
+id="collectionTime"
+type="time">
+
+<textarea
+id="notes"
+placeholder="Order notes (optional)"></textarea>
+
 <button id="checkout">
-Checkout
+Place Order
 </button>
 
 </section>
-
-</main>
-
-<footer>
-<p>Open 7 Days</p>
-<p>1885 Leek Road, Milton, Stoke-on-Trent ST2 7AQ</p>
-<p>☎ 01782 766634</p>
-</footer>
-
-<script src="menu.js"></script>
-<script src="script.js"></script>
-
-</body>
-</html>
