@@ -114,3 +114,12 @@ header p{
     margin:5px;
     font-size:18px;
 }
+#search{
+    width:100%;
+    padding:15px;
+    font-size:18px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    margin:20px 0;
+    box-sizing:border-box;
+}
