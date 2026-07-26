@@ -110,7 +110,7 @@ vegan: [
   {name:"Vegan Burger",price:4.95},
   {name:"Vegan Wrap",price:6.95},
   {name:"Vegan Onion Rings",price:3.20}
-]
+],
 
 drinks: [
   {name:"Can",price:1.50},
