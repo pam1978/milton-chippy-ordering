@@ -112,4 +112,15 @@ vegan: [
   {name:"Vegan Onion Rings",price:3.20}
 ]
 
+drinks: [
+  {name:"Can",price:1.50},
+  {name:"Bottle",price:2.20},
+  {name:"Water",price:1.20},
+  {name:"Fruit Shoot",price:1.20},
+  {name:"Tea",price:1.50},
+  {name:"Coffee",price:2.00},
+  {name:"Regular Milkshake",price:4.50},
+  {name:"Large Milkshake",price:5.50}
+],
+
 };
