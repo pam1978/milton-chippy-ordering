@@ -1,77 +1,100 @@
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f5f5f5;
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    margin: 0;
+    padding: 20px;
 }
 
-.header{
-background:#b30000;
-color:white;
-text-align:center;
-padding:20px;
+header {
+    background: #0b8f3b;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
 }
 
-.categories{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-padding:10px;
+#categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
-.categories button{
-background:#222;
-color:white;
-border:none;
-padding:15px;
-border-radius:8px;
-font-size:16px;
-cursor:pointer;
+#categories button {
+    background: #0b8f3b;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
 }
 
-.categories button:hover{
-background:#444;
+#categories button:hover {
+    background: #087530;
 }
 
-#menu,#basket{
-background:white;
-margin:10px;
-padding:15px;
-border-radius:10px;
-box-shadow:0 2px 8px rgba(0,0,0,.15);
+#menu,
+#basket {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.1);
 }
 
-.menu-item{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:12px 0;
-border-bottom:1px solid #ddd;
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 18px 0;
 }
 
-.menu-item button{
-background:#0a8f3d;
-color:white;
-border:none;
-padding:8px 14px;
-border-radius:6px;
-cursor:pointer;
+.menu-item button {
+    background: #0b8f3b;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-#checkout{
-width:100%;
-background:#0a8f3d;
-color:white;
-border:none;
-padding:15px;
-font-size:18px;
-border-radius:8px;
-margin-top:15px;
+.menu-item button:hover {
+    background: #087530;
 }
 
-footer{
-text-align:center;
-padding:20px;
-background:#222;
-color:white;
-margin-top:20px;
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+#checkout {
+    width: 100%;
+    background: #0b8f3b;
+    color: white;
+    border: none;
+    padding: 18px;
+    font-size: 24px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#checkout:hover {
+    background: #087530;
+}
+
+.basket-item button {
+    margin-right: 6px;
+    padding: 6px 12px;
 }
