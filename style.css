@@ -98,3 +98,19 @@ select {
     margin-right: 6px;
     padding: 6px 12px;
 }
+#logo{
+    width:120px;
+    display:block;
+    margin:0 auto 15px;
+    border-radius:20px;
+}
+
+header h1{
+    margin:5px;
+    font-size:38px;
+}
+
+header p{
+    margin:5px;
+    font-size:18px;
+}
