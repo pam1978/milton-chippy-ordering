@@ -121,6 +121,6 @@ drinks: [
   {name:"Coffee",price:2.00},
   {name:"Regular Milkshake",price:4.50},
   {name:"Large Milkshake",price:5.50}
-],
+]
 
 };
