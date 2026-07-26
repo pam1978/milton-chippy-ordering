@@ -1,11 +1,20 @@
-<section id="basket">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Milton Chippy</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
 <header>
-    <h1>Milton Chippy</h1>
-    <p>Collection Only • Pay In Store</p>
+<h1>Milton Chippy</h1>
+<p>Collection Only • Pay In Store</p>
 </header>
 
 <section id="categories">
-
 <button onclick="showCategory('fish')">Fish & Chips</button>
 <button onclick="showCategory('burgers')">Burgers</button>
 <button onclick="showCategory('kebabs')">Kebabs</button>
@@ -15,37 +24,32 @@
 <button onclick="showCategory('desserts')">Desserts</button>
 <button onclick="showCategory('glutenfree')">Gluten Free</button>
 <button onclick="showCategory('vegan')">Vegan</button>
-
 </section>
 
 <section id="menu">
-
 <h2>Welcome</h2>
-
 <p>Please choose a category above.</p>
-
 </section>
+
+<section id="basket">
 <h2>🛒 Your Order</h2>
 
 <div id="basketItems"></div>
 
 <h3>Total £<span id="total">0.00</span></h3>
 
-<input
-id="customerName"
-type="text"
-placeholder="Your Name">
+<input id="customerName" type="text" placeholder="Your Name">
+<input id="customerPhone" type="tel" placeholder="Phone Number">
+<input id="collectionTime" type="time">
 
-<input
-id="customerPhone"
-type="tel"
-placeholder="Phone Number">
+<textarea id="notes" placeholder="Order notes (optional)"></textarea>
 
-<input
-id="collectionTime"
-type="time">
+<button id="checkout">Place Order</button>
+</section>
 
-<textarea
-id="notes"
-placeholder="Order notes (optional)"></textarea>
+<script src="menu.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
 
