@@ -23,7 +23,6 @@ function showCategory(category) {
 }
 
 function addToBasket(name, price) {
-
     const existing = basket.find(item => item.name === name);
 
     if (existing) {
@@ -48,26 +47,25 @@ function decrease(index) {
     basket[index].qty--;
 
     if (basket[index].qty <= 0) {
-        basket.splice(index,1);
+        basket.splice(index, 1);
     }
 
     updateBasket();
 }
 
 function removeItem(index) {
-    basket.splice(index,1);
+    basket.splice(index, 1);
     updateBasket();
 }
 
 function updateBasket() {
-
     const basketDiv = document.getElementById("basketItems");
 
     basketDiv.innerHTML = "";
 
     let total = 0;
 
-    basket.forEach((item,index)=>{
+    basket.forEach((item, index) => {
 
         total += item.price * item.qty;
 
@@ -78,7 +76,7 @@ function updateBasket() {
 
             £${item.price.toFixed(2)} × ${item.qty}
 
-            = £${(item.price*item.qty).toFixed(2)}
+            = £${(item.price * item.qty).toFixed(2)}
 
             <br><br>
 
@@ -92,7 +90,6 @@ function updateBasket() {
 
         </div>
         `;
-
     });
 
     document.getElementById("total").innerText = total.toFixed(2);
@@ -105,10 +102,25 @@ document.getElementById("checkout").addEventListener("click", function () {
         return;
     }
 
-    const name = document.getElementById("customerName").value;
-    const phone = document.getElementById("customerPhone").value;
+    const name = document.getElementById("customerName").value.trim();
+    const phone = document.getElementById("customerPhone").value.trim();
     const time = document.getElementById("collectionTime").value;
     const notes = document.getElementById("notes").value;
+
+    if (name === "") {
+        alert("Please enter your name.");
+        return;
+    }
+
+    if (phone === "") {
+        alert("Please enter your phone number.");
+        return;
+    }
+
+    if (time === "") {
+        alert("Please choose a collection time.");
+        return;
+    }
 
     let order = "";
 
@@ -119,7 +131,7 @@ document.getElementById("checkout").addEventListener("click", function () {
     const total = document.getElementById("total").innerText;
 
     const body =
-`MILTON CHIPPY ONLINE ORDER
+`🍟 MILTON CHIPPY ONLINE ORDER
 
 Customer: ${name}
 
@@ -127,11 +139,11 @@ Phone: ${phone}
 
 Collection Time: ${time}
 
--------------------------
+================================
 
 ${order}
 
--------------------------
+================================
 
 TOTAL £${total}
 
@@ -145,3 +157,10 @@ Collection Only - Pay In Store`;
 `mailto:Ranvirkaurbassi@gmail.com?subject=Milton Chippy Online Order&body=${encodeURIComponent(body)}`;
 
 });
+
+// Set default collection time to 20 minutes from now
+const now = new Date();
+now.setMinutes(now.getMinutes() + 20);
+
+document.getElementById("collectionTime").value =
+    now.toTimeString().slice(0, 5);
