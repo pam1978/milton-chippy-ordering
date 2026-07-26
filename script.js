@@ -164,3 +164,34 @@ now.setMinutes(now.getMinutes() + 20);
 
 document.getElementById("collectionTime").value =
     now.toTimeString().slice(0, 5);
+function searchMenu() {
+
+    const search = document.getElementById("search").value.toLowerCase();
+
+    const div = document.getElementById("menu");
+
+    div.innerHTML = "";
+
+    Object.keys(menu).forEach(category => {
+
+        menu[category].forEach(item => {
+
+            if (item.name.toLowerCase().includes(search)) {
+
+                div.innerHTML += `
+                <div class="menu-item">
+                    <h3>${item.name}</h3>
+                    <p>£${item.price.toFixed(2)}</p>
+                    <button onclick="addToBasket('${item.name}', ${item.price})">
+                        Add to Basket
+                    </button>
+                </div>
+                `;
+
+            }
+
+        });
+
+    });
+
+}
