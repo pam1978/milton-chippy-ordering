@@ -113,24 +113,41 @@ vegan: [
 ],
 
   drinks: [
-  {name:"Can", price:1.50},
-  {name:"Bottle", price:2.20},
-  {name:"Water", price:1.20},
-  {name:"Fruit Shoot", price:1.20},
 
-  {name:"Small Milkshake", price:3.50},
-  {name:"Large Milkshake", price:4.50},
+  {name:"Can", price:1.35},
+  {name:"Bottle", price:1.95},
+  {name:"Water", price:1.00},
+  {name:"Fruit Shoot", price:1.00},
 
-  {name:"Vanilla Milkshake", price:3.50},
-  {name:"Chocolate Milkshake", price:3.50},
-  {name:"Strawberry Milkshake", price:3.50},
-  {name:"Banana Milkshake", price:3.50},
+  {name:"Small Vanilla Milkshake", price:3.50},
+  {name:"Large Vanilla Milkshake", price:4.50},
 
-  {name:"Crunchie Milkshake", price:4.95},
-  {name:"Oreo Milkshake", price:4.95},
-  {name:"Maltesers Milkshake", price:4.95},
-  {name:"M&M Milkshake", price:4.95},
-  {name:"Kinder Bueno Milkshake", price:4.95},
-  {name:"Caramel Coffee Milkshake", price:4.95}
+  {name:"Small Chocolate Milkshake", price:3.50},
+  {name:"Large Chocolate Milkshake", price:4.50},
+
+  {name:"Small Strawberry Milkshake", price:3.50},
+  {name:"Large Strawberry Milkshake", price:4.50},
+
+  {name:"Small Banana Milkshake", price:3.50},
+  {name:"Large Banana Milkshake", price:4.50},
+
+  {name:"Small Crunchie Milkshake", price:4.95},
+  {name:"Large Crunchie Milkshake", price:5.95},
+
+  {name:"Small Oreo Milkshake", price:4.95},
+  {name:"Large Oreo Milkshake", price:5.95},
+
+  {name:"Small Maltesers Milkshake", price:4.95},
+  {name:"Large Maltesers Milkshake", price:5.95},
+
+  {name:"Small M&M Milkshake", price:4.95},
+  {name:"Large M&M Milkshake", price:5.95},
+
+  {name:"Small Kinder Bueno Milkshake", price:4.95},
+  {name:"Large Kinder Bueno Milkshake", price:5.95},
+
+  {name:"Small Caramel Coffee Milkshake", price:4.95},
+  {name:"Large Caramel Coffee Milkshake", price:5.95}
+
 ],
 };
