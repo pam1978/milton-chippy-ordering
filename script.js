@@ -1,12 +1,42 @@
 let basket = [];
 
 function showCategory(category) {
+
     const div = document.getElementById("menu");
     div.innerHTML = "";
 
-    if (!menu[category]) {
-        div.innerHTML = "<p>No items available.</p>";
-        return;
+    menu[category].forEach(item => {
+
+        let image = "images/chips.jpg";
+
+        if(item.name.toLowerCase().includes("cod")) image="images/cod.jpg";
+        else if(item.name.toLowerCase().includes("burger")) image="images/burger.jpg";
+        else if(item.name.toLowerCase().includes("kebab")) image="images/kebab.jpg";
+        else if(item.name.toLowerCase().includes("chicken")) image="images/chicken.jpg";
+        else if(item.name.toLowerCase().includes("pie")) image="images/pie.jpg";
+        else if(item.name.toLowerCase().includes("milkshake")) image="images/milkshake.jpg";
+        else if(item.name.toLowerCase().includes("cake") || item.name.toLowerCase().includes("cheesecake") || item.name.toLowerCase().includes("brownie"))
+            image="images/dessert.jpg";
+
+        div.innerHTML += `
+        <div class="menu-item">
+
+            <img src="${image}" class="food-photo">
+
+            <div class="food-info">
+                <h3>${item.name}</h3>
+                <p>£${item.price.toFixed(2)}</p>
+            </div>
+
+            <button onclick="addToBasket('${item.name}',${item.price})">
+                +
+            </button>
+
+        </div>
+        `;
+    });
+
+}
     }
 
     menu[category].forEach((item) => {
