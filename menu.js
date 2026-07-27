@@ -133,6 +133,4 @@ vegan: [
   {name:"Kinder Bueno Milkshake", price:4.95},
   {name:"Caramel Coffee Milkshake", price:4.95}
 ],
-]
-
 };
