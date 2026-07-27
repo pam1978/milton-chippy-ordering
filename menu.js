@@ -112,15 +112,27 @@ vegan: [
   {name:"Vegan Onion Rings",price:3.20}
 ],
 
-drinks: [
-  {name:"Can",price:1.50},
-  {name:"Bottle",price:2.20},
-  {name:"Water",price:1.20},
-  {name:"Fruit Shoot",price:1.20},
-  {name:"Tea",price:1.50},
-  {name:"Coffee",price:2.00},
-  {name:"Regular Milkshake",price:4.50},
-  {name:"Large Milkshake",price:5.50}
+  drinks: [
+  {name:"Can", price:1.50},
+  {name:"Bottle", price:2.20},
+  {name:"Water", price:1.20},
+  {name:"Fruit Shoot", price:1.20},
+
+  {name:"Small Milkshake", price:3.50},
+  {name:"Large Milkshake", price:4.50},
+
+  {name:"Vanilla Milkshake", price:3.50},
+  {name:"Chocolate Milkshake", price:3.50},
+  {name:"Strawberry Milkshake", price:3.50},
+  {name:"Banana Milkshake", price:3.50},
+
+  {name:"Crunchie Milkshake", price:4.95},
+  {name:"Oreo Milkshake", price:4.95},
+  {name:"Maltesers Milkshake", price:4.95},
+  {name:"M&M Milkshake", price:4.95},
+  {name:"Kinder Bueno Milkshake", price:4.95},
+  {name:"Caramel Coffee Milkshake", price:4.95}
+],
 ]
 
 };
