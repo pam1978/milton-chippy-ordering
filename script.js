@@ -164,3 +164,129 @@ function updateBasket(){
     document.getElementById("total").innerText = total.toFixed(2);
 
 }
+// ==========================
+// CHECKOUT
+// ==========================
+
+document.getElementById("checkout").addEventListener("click", function () {
+
+    if (basket.length === 0) {
+        alert("Your basket is empty.");
+        return;
+    }
+
+    const name = document.getElementById("customerName").value.trim();
+    const phone = document.getElementById("customerPhone").value.trim();
+    const time = document.getElementById("collectionTime").value;
+    const notes = document.getElementById("notes").value;
+
+    if (name === "") {
+        alert("Please enter your name.");
+        return;
+    }
+
+    if (phone === "") {
+        alert("Please enter your phone number.");
+        return;
+    }
+
+    if (time === "") {
+        alert("Please choose a collection time.");
+        return;
+    }
+
+    let order = "";
+
+    basket.forEach(item => {
+
+        order += `${item.qty} x ${item.name} - £${(item.qty * item.price).toFixed(2)}\n`;
+
+    });
+
+    const total = document.getElementById("total").innerText;
+
+    const body =
+`MILTON CHIPPY ONLINE ORDER
+
+Customer: ${name}
+
+Phone: ${phone}
+
+Collection Time: ${time}
+
+--------------------------------
+
+${order}
+
+--------------------------------
+
+TOTAL £${total}
+
+Notes:
+${notes}
+
+Collection Only - Pay In Store`;
+
+    window.location.href =
+`mailto:Ranvirkaurbassi@gmail.com?subject=Milton Chippy Online Order&body=${encodeURIComponent(body)}`;
+
+});
+
+// ==========================
+// DEFAULT COLLECTION TIME
+// ==========================
+
+const now = new Date();
+now.setMinutes(now.getMinutes() + 20);
+
+const collectionInput = document.getElementById("collectionTime");
+
+if (collectionInput) {
+    collectionInput.value = now.toTimeString().slice(0,5);
+}
+
+// ==========================
+// SEARCH MENU
+// ==========================
+
+function searchMenu() {
+
+    const search = document.getElementById("search").value.toLowerCase();
+
+    const div = document.getElementById("menu");
+
+    div.innerHTML = "";
+
+    Object.keys(menu).forEach(category => {
+
+        menu[category].forEach(item => {
+
+            if(item.name.toLowerCase().includes(search)){
+
+                div.innerHTML += `
+                <div class="menu-item">
+                    <h3>${item.name}</h3>
+                    <p>£${item.price.toFixed(2)}</p>
+                    <button onclick="addToBasket('${item.name}', ${item.price})">
+                        Add to Basket
+                    </button>
+                </div>
+                `;
+
+            }
+
+        });
+
+    });
+
+}
+
+// ==========================
+// LOAD DEFAULT MENU
+// ==========================
+
+window.onload = function () {
+
+    showCategory("fish");
+
+};
