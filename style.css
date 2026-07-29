@@ -176,3 +176,42 @@ header p{
 .food-info{
     flex:1;
 }
+.hero{
+    background:#0b4ea2;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+.logo{
+    width:120px;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    margin:10px 0;
+    font-size:38px;
+}
+
+.hero p{
+    font-size:18px;
+    opacity:0.95;
+}
+
+.hero-buttons button{
+    margin-top:15px;
+    padding:14px 28px;
+    background:#ffd400;
+    color:black;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.hero-buttons button:hover{
+    transform:scale(1.05);
+}
