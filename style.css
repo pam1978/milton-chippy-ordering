@@ -215,3 +215,37 @@ header p{
 .hero-buttons button:hover{
     transform:scale(1.05);
 }
+#basket{
+position:fixed;
+right:20px;
+top:120px;
+width:360px;
+max-height:80vh;
+overflow:auto;
+background:#fff;
+padding:20px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+z-index:999;
+}
+
+body{
+padding-right:390px;
+}
+
+@media(max-width:900px){
+
+#basket{
+position:relative;
+width:auto;
+top:auto;
+right:auto;
+max-height:none;
+margin-top:25px;
+}
+
+body{
+padding-right:0;
+}
+
+}
