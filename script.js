@@ -90,7 +90,34 @@ function addToBasket(name, price) {
     }
 
     updateBasket();
+if (
+    name.toLowerCase().includes("kebab")
+) {
+    showPopup([
+        "Garlic Mayo",
+        "Chilli Sauce",
+        "Mint Sauce",
+        "BBQ Sauce",
+        "Tomato Sauce",
+        "Mayonnaise",
+        "No Sauce"
+    ]);
+}
 
+if (
+    name.toLowerCase().includes("chips") ||
+    name.toLowerCase().includes("cod") ||
+    name.toLowerCase().includes("haddock")
+) {
+    showPopup([
+        "Salt",
+        "Vinegar",
+        "Curry Sauce",
+        "Gravy",
+        "Mushy Peas",
+        "Beans"
+    ]);
+}
 }
 
 function increase(index) {
