@@ -293,3 +293,26 @@ window.onload = function () {
     showCategory("fish");
 
 };
+function showPopup(options) {
+
+    const popup = document.getElementById("popup");
+    const list = document.getElementById("popupOptions");
+
+    list.innerHTML = "";
+
+    options.forEach(option => {
+
+        list.innerHTML += `
+        <label style="display:block;margin:10px 0;">
+            <input type="checkbox"> ${option}
+        </label>
+        `;
+
+    });
+
+    popup.style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
