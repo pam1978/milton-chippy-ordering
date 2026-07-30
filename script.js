@@ -92,18 +92,19 @@ function addToBasket(name, price) {
     updateBasket();
 if (
     name.toLowerCase().includes("kebab")
-) {
-    showPopup([
-        "Garlic Mayo",
-        "Chilli Sauce",
-        "Mint Sauce",
-        "BBQ Sauce",
-        "Tomato Sauce",
-        "Mayonnaise",
-        "No Sauce"
-    ]);
-}
-
+) {    
+showPopup([
+    "🥗 Salad",
+    "No Salad",
+    "",
+    "🧄 Garlic Mayo",
+    "🌶️ Chilli Sauce",
+    "🌿 Mint Sauce",
+    "🍅 Tomato Sauce",
+    "🥚 Mayonnaise",
+    "🍖 BBQ Sauce",
+    "No Sauce"
+]);
 if (
     name.toLowerCase().includes("chips") ||
     name.toLowerCase().includes("cod") ||
