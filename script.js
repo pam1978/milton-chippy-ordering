@@ -7,7 +7,6 @@ let basket = [];
 function showCategory(category) {
 
     const div = document.getElementById("menu");
-
     div.innerHTML = "";
 
     if (!menu[category]) {
@@ -18,39 +17,38 @@ function showCategory(category) {
     menu[category].forEach(item => {
 
         let image = "images/chips.jpg";
+        const itemName = item.name.toLowerCase();
 
-        const name = item.name.toLowerCase();
-
-        if (name.includes("cod") || name.includes("haddock")) {
+        if (itemName.includes("cod") || itemName.includes("haddock")) {
             image = "images/cod.jpg";
-        }
-        else if (name.includes("burger")) {
+        } else if (itemName.includes("burger")) {
             image = "images/burger.jpg";
-        }
-        else if (name.includes("kebab")) {
+        } else if (itemName.includes("kebab")) {
             image = "images/kebab.jpg";
-        }
-        else if (name.includes("chicken") || name.includes("wing") || name.includes("nugget")) {
+        } else if (
+            itemName.includes("chicken") ||
+            itemName.includes("wing") ||
+            itemName.includes("nugget")
+        ) {
             image = "images/chicken.jpg";
-        }
-        else if (name.includes("pie") || name.includes("pudding")) {
+        } else if (
+            itemName.includes("pie") ||
+            itemName.includes("pudding")
+        ) {
             image = "images/pie.jpg";
-        }
-        else if (name.includes("milkshake")) {
+        } else if (itemName.includes("milkshake")) {
             image = "images/milkshake.jpg";
-        }
-        else if (
-            name.includes("cake") ||
-            name.includes("brownie") ||
-            name.includes("cheesecake") ||
-            name.includes("donut")
+        } else if (
+            itemName.includes("cake") ||
+            itemName.includes("brownie") ||
+            itemName.includes("cheesecake") ||
+            itemName.includes("donut")
         ) {
             image = "images/dessert.jpg";
         }
 
         div.innerHTML += `
         <div class="menu-item">
-
             <img src="${image}" class="food-photo">
 
             <div class="food-info">
@@ -61,7 +59,6 @@ function showCategory(category) {
             <button onclick="addToBasket('${item.name}', ${item.price})">
                 +
             </button>
-
         </div>
         `;
 
@@ -70,7 +67,7 @@ function showCategory(category) {
 }
 
 // ==========================
-// BASKET
+// ADD TO BASKET
 // ==========================
 
 function addToBasket(name, price) {
@@ -80,204 +77,112 @@ function addToBasket(name, price) {
     if (existing) {
         existing.qty++;
     } else {
-
         basket.push({
             name: name,
             price: price,
             qty: 1
         });
-
     }
 
     updateBasket();
-if (
-    name.toLowerCase().includes("kebab")
-) {    
-showPopup([
-    "🥗 Salad",
-    "No Salad",
-    "",
-    "🧄 Garlic Mayo",
-    "🌶️ Chilli Sauce",
-    "🌿 Mint Sauce",
-    "🍅 Tomato Sauce",
-    "🥚 Mayonnaise",
-    "🍖 BBQ Sauce",
-    "No Sauce"
-]);
-if (
-    name.toLowerCase().includes("chips") ||
-    name.toLowerCase().includes("cod") ||
-    name.toLowerCase().includes("haddock")
-) {
-    showPopup([
-        "Salt",
-        "Vinegar",
-        "Curry Sauce",
-        "Gravy",
-        "Mushy Peas",
-        "Beans"
-    ]);
+
+    if (name.toLowerCase().includes("kebab")) {
+        showPopup([
+            "🥗 Salad",
+            "No Salad",
+            "🧄 Garlic Mayo",
+            "🌶️ Chilli Sauce",
+            "🌿 Mint Sauce",
+            "🍅 Tomato Sauce",
+            "🥚 Mayonnaise",
+            "🍖 BBQ Sauce",
+            "No Sauce"
+        ]);
+    }
+
+    if (
+        name.toLowerCase().includes("chips") ||
+        name.toLowerCase().includes("cod") ||
+        name.toLowerCase().includes("haddock")
+    ) {
+        showPopup([
+            "Salt",
+            "Vinegar",
+            "Curry Sauce",
+            "Gravy",
+            "Mushy Peas",
+            "Beans"
+        ]);
+    }
+
 }
-}
+
+// ==========================
+// BASKET
+// ==========================
 
 function increase(index) {
-
     basket[index].qty++;
-
     updateBasket();
-
 }
 
 function decrease(index) {
-
     basket[index].qty--;
 
     if (basket[index].qty <= 0) {
-
-        basket.splice(index,1);
-
+        basket.splice(index, 1);
     }
 
     updateBasket();
-
 }
 
-function removeItem(index){
-
-    basket.splice(index,1);
-
+function removeItem(index) {
+    basket.splice(index, 1);
     updateBasket();
-
 }
 
-function updateBasket(){
+function updateBasket() {
 
     const basketDiv = document.getElementById("basketItems");
+    basketDiv.innerHTML = "";
 
-    basketDiv.innerHTML="";
+    let total = 0;
 
-    let total=0;
-
-    basket.forEach((item,index)=>{
+    basket.forEach((item, index) => {
 
         total += item.price * item.qty;
 
         basketDiv.innerHTML += `
-
         <div class="basket-item">
+            <strong>${item.name}</strong><br>
 
-        <strong>${item.name}</strong><br>
+            £${item.price.toFixed(2)} × ${item.qty}
+            = £${(item.price * item.qty).toFixed(2)}
 
-        £${item.price.toFixed(2)} × ${item.qty}
+            <br><br>
 
-        = £${(item.price*item.qty).toFixed(2)}
+            <button onclick="decrease(${index})">−</button>
+            <button onclick="increase(${index})">+</button>
+            <button onclick="removeItem(${index})">Remove</button>
 
-        <br><br>
-
-        <button onclick="decrease(${index})">−</button>
-
-        <button onclick="increase(${index})">+</button>
-
-        <button onclick="removeItem(${index})">Remove</button>
-
-        <hr>
-
+            <hr>
         </div>
-
         `;
 
     });
 
     document.getElementById("total").innerText = total.toFixed(2);
-const count = basket.reduce((sum, item) => sum + item.qty, 0);
 
-document.getElementById("basketCount").innerText = count;
-document.getElementById("basketTotal").innerText = total.toFixed(2);
-}
-// ==========================
-// CHECKOUT
-// ==========================
+    const basketCount = document.getElementById("basketCount");
+    const basketTotal = document.getElementById("basketTotal");
 
-document.getElementById("checkout").addEventListener("click", function () {
+    if (basketCount) basketCount.innerText = basket.reduce((sum, item) => sum + item.qty, 0);
+    if (basketTotal) basketTotal.innerText = total.toFixed(2);
 
-    if (basket.length === 0) {
-        alert("Your basket is empty.");
-        return;
-    }
-
-    const name = document.getElementById("customerName").value.trim();
-    const phone = document.getElementById("customerPhone").value.trim();
-    const time = document.getElementById("collectionTime").value;
-    const notes = document.getElementById("notes").value;
-
-    if (name === "") {
-        alert("Please enter your name.");
-        return;
-    }
-
-    if (phone === "") {
-        alert("Please enter your phone number.");
-        return;
-    }
-
-    if (time === "") {
-        alert("Please choose a collection time.");
-        return;
-    }
-
-    let order = "";
-
-    basket.forEach(item => {
-
-        order += `${item.qty} x ${item.name} - £${(item.qty * item.price).toFixed(2)}\n`;
-
-    });
-
-    const total = document.getElementById("total").innerText;
-
-    const body =
-`MILTON CHIPPY ONLINE ORDER
-
-Customer: ${name}
-
-Phone: ${phone}
-
-Collection Time: ${time}
-
---------------------------------
-
-${order}
-
---------------------------------
-
-TOTAL £${total}
-
-Notes:
-${notes}
-
-Collection Only - Pay In Store`;
-
-    window.location.href =
-`mailto:Ranvirkaurbassi@gmail.com?subject=Milton Chippy Online Order&body=${encodeURIComponent(body)}`;
-
-});
-
-// ==========================
-// DEFAULT COLLECTION TIME
-// ==========================
-
-const now = new Date();
-now.setMinutes(now.getMinutes() + 20);
-
-const collectionInput = document.getElementById("collectionTime");
-
-if (collectionInput) {
-    collectionInput.value = now.toTimeString().slice(0,5);
 }
 
 // ==========================
-// SEARCH MENU
+// SEARCH
 // ==========================
 
 function searchMenu() {
@@ -285,21 +190,20 @@ function searchMenu() {
     const search = document.getElementById("search").value.toLowerCase();
 
     const div = document.getElementById("menu");
-
     div.innerHTML = "";
 
     Object.keys(menu).forEach(category => {
 
         menu[category].forEach(item => {
 
-            if(item.name.toLowerCase().includes(search)){
+            if (item.name.toLowerCase().includes(search)) {
 
                 div.innerHTML += `
                 <div class="menu-item">
                     <h3>${item.name}</h3>
                     <p>£${item.price.toFixed(2)}</p>
                     <button onclick="addToBasket('${item.name}', ${item.price})">
-                        Add to Basket
+                        +
                     </button>
                 </div>
                 `;
@@ -313,18 +217,15 @@ function searchMenu() {
 }
 
 // ==========================
-// LOAD DEFAULT MENU
+// POPUP
 // ==========================
 
-window.onload = function () {
-
-    showCategory("fish");
-
-};
 function showPopup(options) {
 
     const popup = document.getElementById("popup");
     const list = document.getElementById("popupOptions");
+
+    if (!popup || !list) return;
 
     list.innerHTML = "";
 
@@ -332,7 +233,8 @@ function showPopup(options) {
 
         list.innerHTML += `
         <label style="display:block;margin:10px 0;">
-            <input type="checkbox"> ${option}
+            <input type="checkbox">
+            ${option}
         </label>
         `;
 
@@ -344,3 +246,68 @@ function showPopup(options) {
 function closePopup() {
     document.getElementById("popup").style.display = "none";
 }
+
+// ==========================
+// DEFAULT TIME
+// ==========================
+
+window.onload = function () {
+
+    showCategory("fish");
+
+    const input = document.getElementById("collectionTime");
+
+    if (input) {
+        const now = new Date();
+        now.setMinutes(now.getMinutes() + 20);
+        input.value = now.toTimeString().slice(0, 5);
+    }
+
+};
+
+// ==========================
+// CHECKOUT
+// ==========================
+
+document.getElementById("checkout").addEventListener("click", function () {
+
+    if (basket.length === 0) {
+        alert("Your basket is empty.");
+        return;
+    }
+
+    const name = document.getElementById("customerName").value;
+    const phone = document.getElementById("customerPhone").value;
+    const time = document.getElementById("collectionTime").value;
+    const notes = document.getElementById("notes").value;
+
+    let order = "";
+
+    basket.forEach(item => {
+        order += `${item.qty} x ${item.name} - £${(item.qty * item.price).toFixed(2)}\n`;
+    });
+
+    const total = document.getElementById("total").innerText;
+
+    const body =
+`MILTON CHIPPY ONLINE ORDER
+
+Customer: ${name}
+
+Phone: ${phone}
+
+Collection Time: ${time}
+
+${order}
+
+TOTAL £${total}
+
+Notes:
+${notes}
+
+Collection Only - Pay In Store`;
+
+    window.location.href =
+`mailto:Ranvirkaurbassi@gmail.com?subject=Milton Chippy Online Order&body=${encodeURIComponent(body)}`;
+
+});
