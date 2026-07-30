@@ -162,7 +162,10 @@ function updateBasket(){
     });
 
     document.getElementById("total").innerText = total.toFixed(2);
+const count = basket.reduce((sum, item) => sum + item.qty, 0);
 
+document.getElementById("basketCount").innerText = count;
+document.getElementById("basketTotal").innerText = total.toFixed(2);
 }
 // ==========================
 // CHECKOUT
