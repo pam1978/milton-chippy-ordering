@@ -151,3 +151,19 @@ vegan: [
 
 ],
 };
+specials: [
+
+  {name:"Mini Cod, Sausage & Chips", price:8.50},
+  {name:"Any Pie & Chips", price:7.50},
+  {name:"4 Chicken Nuggets & Chips", price:5.00},
+  {name:"Small Sausage & Chips", price:5.00},
+  {name:"Large Sausage & Chips", price:6.00}
+
+],
+
+salads: [
+
+  {name:"Tuna Salad", price:5.50},
+  {name:"Side Salad", price:2.95}
+
+]
