@@ -150,14 +150,30 @@ vegan: [
   {name:"Large Caramel Coffee Milkshake", price:5.95}
 
 ],
-};
-specials: [
+
+  specials: [
 
   {name:"Mini Cod, Sausage & Chips", price:8.50},
+
   {name:"Any Pie & Chips", price:7.50},
+
   {name:"4 Chicken Nuggets & Chips", price:5.00},
+
   {name:"Small Sausage & Chips", price:5.00},
-  {name:"Large Sausage & Chips", price:6.00}
+
+  {name:"Large Sausage & Chips", price:6.00},
+
+  {name:"Fish Cake & Chips", price:5.00},
+
+  {name:"4 SFC Strips & Chips", price:7.50},
+
+  {name:"4 Hot Wings & Chips", price:7.50},
+
+  {name:"Cheese Burger & Chips", price:7.50},
+
+  {name:"Pudding & Chips", price:7.50}
+
+],
 
 ],
 
