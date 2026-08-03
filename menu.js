@@ -61,9 +61,9 @@ pies: [
   {name:"Steak & Kidney Pudding",price:3.50},
   {name:"Cheese & Onion Pasty",price:3.00},
   {name:"Cheese & Onion Pie",price:3.25}
-],
-
-extras: [
+], 
+ 
+  extras: [
   {name:"Onion Rings (5)",price:3.45},
   {name:"Mozzarella Sticks (5)",price:3.45},
   {name:"Jalapeno Bites (5)",price:3.45},
@@ -73,6 +73,48 @@ extras: [
   {name:"Single Pitta",price:1.35},
   {name:"Single Bap",price:0.85},
   {name:"Jacket Potato",price:5.00}
+],
+
+specials: [
+  {name:"Mini Cod, Sausage & Chips",price:8.50},
+  {name:"Any Pie & Chips",price:7.50},
+  {name:"4 Chicken Nuggets & Chips",price:5.00},
+  {name:"Small Sausage & Chips",price:5.00},
+  {name:"Large Sausage & Chips",price:6.00},
+  {name:"Fishcake & Chips",price:5.00},
+  {name:"4 SFC Strips & Chips",price:7.50},
+  {name:"4 Hot Wings & Chips",price:7.50},
+  {name:"Cheeseburger & Chips",price:7.50},
+  {name:"Pudding & Chips",price:7.50}
+],
+
+salad: [
+  {name:"Tuna Salad",price:4.00},
+  {name:"Side Salad",price:2.00}
+],
+
+drinks: [
+  {name:"Can",price:1.35},
+  {name:"Bottle",price:1.95},
+  {name:"Water",price:1.00},
+  {name:"Fruit Shoot",price:1.00},
+
+  {name:"Small Vanilla Milkshake",price:3.50},
+  {name:"Small Chocolate Milkshake",price:3.50},
+  {name:"Small Strawberry Milkshake",price:3.50},
+  {name:"Small Banana Milkshake",price:3.50},
+
+  {name:"Large Vanilla Milkshake",price:4.50},
+  {name:"Large Chocolate Milkshake",price:4.50},
+  {name:"Large Strawberry Milkshake",price:4.50},
+  {name:"Large Banana Milkshake",price:4.50},
+
+  {name:"Crunchie Milkshake",price:4.95},
+  {name:"Oreo Milkshake",price:4.95},
+  {name:"Maltesers Milkshake",price:4.95},
+  {name:"M&M Milkshake",price:4.95},
+  {name:"Kinder Bueno Milkshake",price:4.95},
+  {name:"Caramel Coffee Milkshake",price:4.95}
 ],
 
 desserts: [
@@ -110,76 +152,6 @@ vegan: [
   {name:"Vegan Burger",price:4.95},
   {name:"Vegan Wrap",price:6.95},
   {name:"Vegan Onion Rings",price:3.20}
-],
-
-  drinks: [
-
-  {name:"Can", price:1.35},
-  {name:"Bottle", price:1.95},
-  {name:"Water", price:1.00},
-  {name:"Fruit Shoot", price:1.00},
-
-  {name:"Small Vanilla Milkshake", price:3.50},
-  {name:"Large Vanilla Milkshake", price:4.50},
-
-  {name:"Small Chocolate Milkshake", price:3.50},
-  {name:"Large Chocolate Milkshake", price:4.50},
-
-  {name:"Small Strawberry Milkshake", price:3.50},
-  {name:"Large Strawberry Milkshake", price:4.50},
-
-  {name:"Small Banana Milkshake", price:3.50},
-  {name:"Large Banana Milkshake", price:4.50},
-
-  {name:"Small Crunchie Milkshake", price:4.95},
-  {name:"Large Crunchie Milkshake", price:5.95},
-
-  {name:"Small Oreo Milkshake", price:4.95},
-  {name:"Large Oreo Milkshake", price:5.95},
-
-  {name:"Small Maltesers Milkshake", price:4.95},
-  {name:"Large Maltesers Milkshake", price:5.95},
-
-  {name:"Small M&M Milkshake", price:4.95},
-  {name:"Large M&M Milkshake", price:5.95},
-
-  {name:"Small Kinder Bueno Milkshake", price:4.95},
-  {name:"Large Kinder Bueno Milkshake", price:5.95},
-
-  {name:"Small Caramel Coffee Milkshake", price:4.95},
-  {name:"Large Caramel Coffee Milkshake", price:5.95}
-
-],
-
-  specials: [
-
-  {name:"Mini Cod, Sausage & Chips", price:8.50},
-
-  {name:"Any Pie & Chips", price:7.50},
-
-  {name:"4 Chicken Nuggets & Chips", price:5.00},
-
-  {name:"Small Sausage & Chips", price:5.00},
-
-  {name:"Large Sausage & Chips", price:6.00},
-
-  {name:"Fish Cake & Chips", price:5.00},
-
-  {name:"4 SFC Strips & Chips", price:7.50},
-
-  {name:"4 Hot Wings & Chips", price:7.50},
-
-  {name:"Cheese Burger & Chips", price:7.50},
-
-  {name:"Pudding & Chips", price:7.50}
-
-],
-
-],
-
-salads: [
-
-  {name:"Tuna Salad", price:5.50},
-  {name:"Side Salad", price:2.95}
-
 ]
+
+};
