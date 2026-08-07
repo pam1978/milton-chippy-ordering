@@ -308,3 +308,25 @@ textarea{
 }
 
 }
+.price{
+    color:#FFD700;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.add-btn{
+    background:#d60000;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    color:white;
+    font-size:30px;
+    border:none;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.add-btn:hover{
+    background:#ff1f1f;
+    transform:rotate(90deg) scale(1.1);
+}
