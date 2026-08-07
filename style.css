@@ -61,30 +61,34 @@ border-radius:8px;
 }
 
 #categories{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:10px;
-padding:15px;
-background:#181818;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:12px;
+    padding:20px;
+    background:#111;
 }
 
 #categories button{
-background:#c40000;
-color:#fff;
-border:none;
-padding:12px 18px;
-border-radius:8px;
-cursor:pointer;
-font-size:16px;
-font-weight:bold;
-transition:.2s;
+    background:#1f1f1f;
+    color:#fff;
+    border:2px solid #c40000;
+    border-radius:14px;
+    padding:16px 12px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.25s;
+    box-shadow:0 4px 10px rgba(0,0,0,.35);
 }
 
 #categories button:hover{
-background:#ff0000;
-transform:scale(1.05);
+    background:#c40000;
+    transform:translateY(-3px);
 }
+
+#categories button:active{
+    transform:scale(.97);
+}r
 
 #menu{
 padding:20px;
