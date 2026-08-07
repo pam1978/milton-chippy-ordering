@@ -48,19 +48,29 @@ function showCategory(category) {
         }
 
         div.innerHTML += `
-        <div class="menu-item">
-            <img src="${image}" class="food-photo">
+<div class="menu-item">
 
-            <div class="food-info">
-                <h3>${item.name}</h3>
-                <p>£${item.price.toFixed(2)}</p>
-            </div>
+    <img src="${image}" class="food-photo">
 
-            <button onclick="addToBasket('${item.name}', ${item.price})">
-                +
-            </button>
-        </div>
-        `;
+    <div class="food-info">
+
+        <h3>${item.name}</h3>
+
+        <p class="price">
+            £${item.price.toFixed(2)}
+        </p>
+
+    </div>
+
+    <button class="add-btn"
+        onclick="addToBasket('${item.name}',${item.price})">
+
+        +
+
+    </button>
+
+</div>
+`;
 
     });
 
