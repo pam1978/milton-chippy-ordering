@@ -351,7 +351,19 @@ ${notes}
 
 Collection Only - Pay In Store`;
 
+confetti({
+    particleCount: 150,
+    spread: 90,
+    origin: {
+        y: 0.6
+    }
+});
+
+setTimeout(function(){
+
     window.location.href =
-`mailto:Ranvirkaurbassi@gmail.com?subject=Milton Chippy Online Order&body=${encodeURIComponent(body)}`;
+    `mailto:Ranvirkaurbassi@gmail.com?subject=Milton Chippy Online Order&body=${encodeURIComponent(body)}`;
+
+}, 1500);    
 
 });
