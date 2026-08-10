@@ -16,36 +16,70 @@ function showCategory(category) {
 
     menu[category].forEach(item => {
 
-        let image = "images/chips.jpg";
-        const itemName = item.name.toLowerCase();
+       let image = "images/chips.jpg";
 
-        if (itemName.includes("cod") || itemName.includes("haddock")) {
-            image = "images/cod.jpg";
-        } else if (itemName.includes("burger")) {
-            image = "images/burger.jpg";
-        } else if (itemName.includes("kebab")) {
-            image = "images/kebab.jpg";
-        } else if (
-            itemName.includes("chicken") ||
-            itemName.includes("wing") ||
-            itemName.includes("nugget")
-        ) {
-            image = "images/chicken.jpg";
-        } else if (
-            itemName.includes("pie") ||
-            itemName.includes("pudding")
-        ) {
-            image = "images/pie.jpg";
-        } else if (itemName.includes("milkshake")) {
-            image = "images/milkshake.jpg";
-        } else if (
-            itemName.includes("cake") ||
-            itemName.includes("brownie") ||
-            itemName.includes("cheesecake") ||
-            itemName.includes("donut")
-        ) {
-            image = "images/dessert.jpg";
-        }
+const itemName = item.name.toLowerCase();
+
+if (
+    itemName.includes("cod") ||
+    itemName.includes("haddock") ||
+    itemName.includes("fishcake") ||
+    itemName.includes("scampi") ||
+    itemName.includes("roe")
+) {
+    image = "images/cod.jpg";
+
+} else if (
+    itemName.includes("burger")
+) {
+    image = "images/burger.jpg";
+
+} else if (
+    itemName.includes("kebab") ||
+    itemName.includes("doner meat")
+) {
+    image = "images/kebab.jpg";
+
+} else if (
+    itemName.includes("chicken") ||
+    itemName.includes("wing") ||
+    itemName.includes("nugget") ||
+    itemName.includes("goujon") ||
+    itemName.includes("sfc")
+) {
+    image = "images/chicken.jpg";
+
+} else if (
+    itemName.includes("pie") ||
+    itemName.includes("pudding") ||
+    itemName.includes("pasty")
+) {
+    image = "images/pie.jpg";
+
+} else if (
+    itemName.includes("sausage")
+) {
+    image = "images/sausage.jpg";
+
+} else if (
+    itemName.includes("milkshake")
+) {
+    image = "images/milkshake.jpg";
+
+} else if (
+    itemName.includes("cake") ||
+    itemName.includes("brownie") ||
+    itemName.includes("cheesecake") ||
+    itemName.includes("donut") ||
+    itemName.includes("crumble")
+) {
+    image = "images/dessert.jpg";
+
+} else if (
+    itemName.includes("salad")
+) {
+    image = "images/salad.jpg";
+}
 
         div.innerHTML += `
 <div class="menu-item">
