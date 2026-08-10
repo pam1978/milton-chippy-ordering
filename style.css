@@ -330,3 +330,55 @@ textarea{
     background:#ff1f1f;
     transform:rotate(90deg) scale(1.1);
 }
+/* =========================
+   STICKY BASKET
+========================= */
+
+#basket{
+    position:sticky;
+    bottom:10px;
+    z-index:500;
+    border:2px solid #c40000;
+}
+
+/* Basket summary bar */
+
+#basketSummary{
+    background:#c40000;
+    color:white;
+    padding:14px;
+    border-radius:10px;
+    margin-bottom:18px;
+    text-align:center;
+}
+
+/* Basket buttons */
+
+.basket-item button{
+    background:#333;
+    color:white;
+    border:1px solid #c40000;
+    padding:8px 12px;
+    border-radius:7px;
+    cursor:pointer;
+    margin-right:5px;
+}
+
+.basket-item button:hover{
+    background:#c40000;
+}
+
+/* Mobile */
+
+@media(max-width:700px){
+
+    #basket{
+        margin:10px;
+        bottom:5px;
+    }
+
+    #basketSummary{
+        font-size:16px;
+    }
+
+}
