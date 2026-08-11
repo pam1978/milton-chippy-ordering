@@ -1,136 +1,95 @@
 let basket = [];
+let pendingItem = null;
 
 
 /* =========================
    SHOW MENU CATEGORY
 ========================= */
 
-function showCategory(category){
+function showCategory(category) {
 
     const div = document.getElementById("menu");
 
-    if(!div){
-        return;
-    }
+    if (!div) return;
 
     div.innerHTML = "";
 
-
-    if(!menu[category]){
-
-        div.innerHTML =
-            "<p>No items found.</p>";
-
+    if (!menu[category]) {
+        div.innerHTML = "<p>No items found.</p>";
         return;
     }
 
-
     const title =
-        category.charAt(0).toUpperCase()
-        + category.slice(1);
+        category.charAt(0).toUpperCase() +
+        category.slice(1);
 
-
-    div.innerHTML =
-        `<h2>${title}</h2>`;
-
+    div.innerHTML = `<h2>${title}</h2>`;
 
     menu[category].forEach(item => {
 
-        let image =
-            "images/chips.jpg";
+        let image = "images/chips.jpg";
 
+        const itemName = item.name.toLowerCase();
 
-        const itemName =
-            item.name.toLowerCase();
-
-
-        if(
+        if (
             itemName.includes("cod") ||
             itemName.includes("haddock") ||
             itemName.includes("fishcake") ||
             itemName.includes("scampi") ||
             itemName.includes("roe")
-        ){
-
-            image =
-                "images/cod.jpg";
-
+        ) {
+            image = "images/cod.jpg";
         }
-        else if(
-            itemName.includes("burger")
-        ){
 
-            image =
-                "images/burger.jpg";
-
+        else if (itemName.includes("burger")) {
+            image = "images/burger.jpg";
         }
-        else if(
+
+        else if (
             itemName.includes("kebab") ||
             itemName.includes("doner")
-        ){
-
-            image =
-                "images/kebab.jpg";
-
+        ) {
+            image = "images/kebab.jpg";
         }
-        else if(
+
+        else if (
             itemName.includes("chicken") ||
             itemName.includes("wing") ||
             itemName.includes("nugget") ||
             itemName.includes("goujon") ||
             itemName.includes("sfc")
-        ){
-
-            image =
-                "images/chicken.jpg";
-
+        ) {
+            image = "images/chicken.jpg";
         }
-        else if(
+
+        else if (
             itemName.includes("pie") ||
             itemName.includes("pudding") ||
             itemName.includes("pasty")
-        ){
-
-            image =
-                "images/pie.jpg";
-
+        ) {
+            image = "images/pie.jpg";
         }
-        else if(
-            itemName.includes("sausage")
-        ){
 
-            image =
-                "images/sausage.jpg";
-
+        else if (itemName.includes("sausage")) {
+            image = "images/sausage.jpg";
         }
-        else if(
-            itemName.includes("milkshake")
-        ){
 
-            image =
-                "images/milkshake.jpg";
-
+        else if (itemName.includes("milkshake")) {
+            image = "images/milkshake.jpg";
         }
-        else if(
+
+        else if (
             itemName.includes("cake") ||
             itemName.includes("brownie") ||
             itemName.includes("cheesecake") ||
             itemName.includes("donut")
-        ){
-
-            image =
-                "images/dessert.jpg";
-
-        }
-        else if(
-            itemName.includes("salad")
-        ){
-
-            image =
-                "images/salad.jpg";
-
+        ) {
+            image = "images/dessert.jpg";
         }
 
+        else if (itemName.includes("salad")) {
+            image = "images/salad.jpg";
+        }
 
         div.innerHTML += `
 
@@ -144,9 +103,7 @@ function showCategory(category){
 
             <div class="food-info">
 
-                <h3>
-                    ${item.name}
-                </h3>
+                <h3>${item.name}</h3>
 
                 <p>
                     £${item.price.toFixed(2)}
@@ -155,7 +112,7 @@ function showCategory(category){
             </div>
 
             <button
-                onclick="addToBasket('${item.name}',${item.price})"
+                onclick="addToBasket('${item.name}', ${item.price})"
             >
                 +
             </button>
@@ -173,28 +130,110 @@ function showCategory(category){
    ADD TO BASKET
 ========================= */
 
-function addToBasket(name,price){
+function addToBasket(name, price) {
 
-    const existing =
-        basket.find(
-            item => item.name === name
-        );
+    /*
+       Kebab items need extras.
+    */
+
+    if (name.toLowerCase().includes("kebab")) {
+
+        pendingItem = {
+            name: name,
+            price: price
+        };
+
+        showPopup([
+            "🥗 Salad",
+            "No Salad",
+            "🧄 Garlic Mayo",
+            "🌶️ Chilli Sauce",
+            "🌿 Mint Sauce",
+            "🍅 Tomato Sauce",
+            "🥚 Mayonnaise",
+            "🍖 BBQ Sauce",
+            "No Sauce"
+        ]);
+
+        return;
+    }
 
 
-    if(existing){
+    /*
+       Chips and fish extras.
+    */
+
+    if (
+        name.toLowerCase().includes("chips") ||
+        name.toLowerCase().includes("cod") ||
+        name.toLowerCase().includes("haddock")
+    ) {
+
+        pendingItem = {
+            name: name,
+            price: price
+        };
+
+        showPopup([
+            "Salt",
+            "Vinegar",
+            "Curry Sauce",
+            "Gravy",
+            "Mushy Peas",
+            "Beans"
+        ]);
+
+        return;
+    }
+
+
+    /*
+       Normal item.
+    */
+
+    addItemToBasket(
+        name,
+        price,
+        []
+    );
+
+}
+
+
+/* =========================
+   ADD ITEM TO BASKET
+========================= */
+
+function addItemToBasket(
+    name,
+    price,
+    extras
+) {
+
+    const existing = basket.find(item =>
+        item.name === name &&
+        JSON.stringify(item.extras) ===
+        JSON.stringify(extras)
+    );
+
+
+    if (existing) {
 
         existing.qty++;
 
     }
-    else{
+
+    else {
 
         basket.push({
 
-            name:name,
+            name: name,
 
-            price:price,
+            price: price,
 
-            qty:1
+            qty: 1,
+
+            extras: extras
 
         });
 
@@ -203,67 +242,130 @@ function addToBasket(name,price){
 
     updateBasket();
 
+}
 
-    /* KEBAB EXTRAS */
 
-    if(
-        name.toLowerCase().includes("kebab")
-    ){
+/* =========================
+   SHOW POPUP
+========================= */
 
-        showPopup([
+function showPopup(options) {
 
-            "🥗 Salad",
+    const popup =
+        document.getElementById("popup");
 
-            "No Salad",
+    const list =
+        document.getElementById("popupOptions");
 
-            "🧄 Garlic Mayo",
 
-            "🌶️ Chilli Sauce",
+    if (!popup || !list) return;
 
-            "🌿 Mint Sauce",
 
-            "🍅 Tomato Sauce",
+    list.innerHTML = "";
 
-            "🥚 Mayonnaise",
 
-            "🍖 BBQ Sauce",
+    options.forEach((option, index) => {
 
-            "No Sauce"
+        list.innerHTML += `
 
-        ]);
+        <label
+            style="
+                display:block;
+                margin:12px 0;
+                font-size:17px;
+            "
+        >
+
+            <input
+                type="checkbox"
+                class="extra-option"
+                value="${option}"
+            >
+
+            ${option}
+
+        </label>
+
+        `;
+
+    });
+
+
+    popup.style.display = "flex";
+
+}
+
+
+/* =========================
+   CLOSE / SAVE POPUP
+========================= */
+
+function closePopup() {
+
+    const popup =
+        document.getElementById("popup");
+
+
+    if (!popup) return;
+
+
+    /*
+       If there is an item waiting
+       for extras, save the choices.
+    */
+
+    if (pendingItem) {
+
+        const selected =
+            document.querySelectorAll(
+                ".extra-option:checked"
+            );
+
+
+        const extras = [];
+
+
+        selected.forEach(option => {
+
+            /*
+               Don't save "No Salad"
+               or "No Sauce" together
+               with the normal choices.
+            */
+
+            const value =
+                option.value;
+
+
+            if (
+                value !== "No Salad" &&
+                value !== "No Sauce"
+            ) {
+
+                extras.push(value);
+
+            }
+
+        });
+
+
+        /*
+           Save the item with extras.
+        */
+
+        addItemToBasket(
+            pendingItem.name,
+            pendingItem.price,
+            extras
+        );
+
+
+        pendingItem = null;
 
     }
 
 
-    /* CHIPS / FISH EXTRAS */
-
-    if(
-
-        name.toLowerCase().includes("chips") ||
-
-        name.toLowerCase().includes("cod") ||
-
-        name.toLowerCase().includes("haddock")
-
-    ){
-
-        showPopup([
-
-            "Salt",
-
-            "Vinegar",
-
-            "Curry Sauce",
-
-            "Gravy",
-
-            "Mushy Peas",
-
-            "Beans"
-
-        ]);
-
-    }
+    popup.style.display = "none";
 
 }
 
@@ -272,7 +374,7 @@ function addToBasket(name,price){
    INCREASE
 ========================= */
 
-function increase(index){
+function increase(index) {
 
     basket[index].qty++;
 
@@ -285,16 +387,14 @@ function increase(index){
    DECREASE
 ========================= */
 
-function decrease(index){
+function decrease(index) {
 
     basket[index].qty--;
 
 
-    if(
-        basket[index].qty <= 0
-    ){
+    if (basket[index].qty <= 0) {
 
-        basket.splice(index,1);
+        basket.splice(index, 1);
 
     }
 
@@ -308,9 +408,9 @@ function decrease(index){
    REMOVE
 ========================= */
 
-function removeItem(index){
+function removeItem(index) {
 
-    basket.splice(index,1);
+    basket.splice(index, 1);
 
     updateBasket();
 
@@ -321,7 +421,7 @@ function removeItem(index){
    UPDATE BASKET
 ========================= */
 
-function updateBasket(){
+function updateBasket() {
 
     const basketDiv =
         document.getElementById(
@@ -329,9 +429,7 @@ function updateBasket(){
         );
 
 
-    if(!basketDiv){
-        return;
-    }
+    if (!basketDiv) return;
 
 
     basketDiv.innerHTML = "";
@@ -340,65 +438,93 @@ function updateBasket(){
     let total = 0;
 
 
-    basket.forEach(
-        (item,index) => {
+    basket.forEach((item, index) => {
 
-            total +=
-                item.price * item.qty;
+        total +=
+            item.price * item.qty;
 
 
-            basketDiv.innerHTML += `
+        let extrasText = "";
 
-            <div class="basket-item">
 
-                <strong>
-                    ${item.name}
-                </strong>
+        if (
+            item.extras &&
+            item.extras.length > 0
+        ) {
 
-                <br>
+            extrasText = `
 
-                £${item.price.toFixed(2)}
-                × ${item.qty}
-
-                =
-                £${(
-                    item.price *
-                    item.qty
-                ).toFixed(2)}
-
-                <br><br>
-
-                <button
-                    onclick="decrease(${index})"
+                <div
+                    style="
+                        color:#ffd700;
+                        font-size:14px;
+                        margin-top:5px;
+                    "
                 >
-                    −
-                </button>
 
-                <button
-                    onclick="increase(${index})"
-                >
-                    +
-                </button>
+                    Extras:
+                    ${item.extras.join(", ")}
 
-                <button
-                    onclick="removeItem(${index})"
-                >
-                    Remove
-                </button>
-
-            </div>
+                </div>
 
             `;
 
         }
-    );
+
+
+        basketDiv.innerHTML += `
+
+        <div class="basket-item">
+
+            <strong>
+                ${item.name}
+            </strong>
+
+            ${extrasText}
+
+            <br>
+
+            £${item.price.toFixed(2)}
+            × ${item.qty}
+
+            =
+            £${(
+                item.price *
+                item.qty
+            ).toFixed(2)}
+
+            <br><br>
+
+            <button
+                onclick="decrease(${index})"
+            >
+                −
+            </button>
+
+            <button
+                onclick="increase(${index})"
+            >
+                +
+            </button>
+
+            <button
+                onclick="removeItem(${index})"
+            >
+                Remove
+            </button>
+
+        </div>
+
+        `;
+
+    });
 
 
     const totalElement =
         document.getElementById("total");
 
 
-    if(totalElement){
+    if (totalElement) {
 
         totalElement.innerText =
             total.toFixed(2);
@@ -408,7 +534,7 @@ function updateBasket(){
 
     const count =
         basket.reduce(
-            (sum,item) =>
+            (sum, item) =>
                 sum + item.qty,
             0
         );
@@ -426,7 +552,7 @@ function updateBasket(){
         );
 
 
-    if(countElement){
+    if (countElement) {
 
         countElement.innerText =
             count;
@@ -434,7 +560,7 @@ function updateBasket(){
     }
 
 
-    if(basketTotal){
+    if (basketTotal) {
 
         basketTotal.innerText =
             total.toFixed(2);
@@ -448,7 +574,7 @@ function updateBasket(){
    OPEN / CLOSE BASKET
 ========================= */
 
-function toggleBasket(){
+function toggleBasket() {
 
     const basketElement =
         document.getElementById(
@@ -456,9 +582,7 @@ function toggleBasket(){
         );
 
 
-    if(!basketElement){
-        return;
-    }
+    if (!basketElement) return;
 
 
     basketElement.classList.toggle(
@@ -472,13 +596,12 @@ function toggleBasket(){
    SEARCH
 ========================= */
 
-function searchMenu(){
+function searchMenu() {
 
     const searchInput =
         document.getElementById(
             "search"
         );
-
 
     const div =
         document.getElementById(
@@ -486,9 +609,7 @@ function searchMenu(){
         );
 
 
-    if(!searchInput || !div){
-        return;
-    }
+    if (!searchInput || !div) return;
 
 
     const search =
@@ -497,7 +618,7 @@ function searchMenu(){
             .trim();
 
 
-    if(search === ""){
+    if (search === "") {
 
         showCategory("fish");
 
@@ -519,11 +640,11 @@ function searchMenu(){
             menu[category].forEach(
                 item => {
 
-                    if(
+                    if (
                         item.name
                             .toLowerCase()
                             .includes(search)
-                    ){
+                    ) {
 
                         found = true;
 
@@ -537,64 +658,70 @@ function searchMenu(){
                                 .toLowerCase();
 
 
-                        if(
+                        if (
                             name.includes("cod") ||
                             name.includes("haddock")
-                        ){
+                        ) {
 
                             image =
                                 "images/cod.jpg";
 
                         }
-                        else if(
+
+                        else if (
                             name.includes("burger")
-                        ){
+                        ) {
 
                             image =
                                 "images/burger.jpg";
 
                         }
-                        else if(
+
+                        else if (
                             name.includes("kebab")
-                        ){
+                        ) {
 
                             image =
                                 "images/kebab.jpg";
 
                         }
-                        else if(
+
+                        else if (
                             name.includes("chicken") ||
                             name.includes("wing") ||
                             name.includes("nugget")
-                        ){
+                        ) {
 
                             image =
                                 "images/chicken.jpg";
 
                         }
-                        else if(
+
+                        else if (
                             name.includes("pie") ||
                             name.includes("pudding")
-                        ){
+                        ) {
 
                             image =
                                 "images/pie.jpg";
 
                         }
-                        else if(
+
+                        else if (
                             name.includes("milkshake")
-                        ){
+                        ) {
 
                             image =
                                 "images/milkshake.jpg";
 
                         }
-                        else if(
+
+                        else if (
                             name.includes("cake") ||
                             name.includes("brownie") ||
                             name.includes("cheesecake") ||
                             name.includes("donut")
-                        ){
+                        ) {
 
                             image =
                                 "images/dessert.jpg";
@@ -625,7 +752,7 @@ function searchMenu(){
                             </div>
 
                             <button
-                                onclick="addToBasket('${item.name}',${item.price})"
+                                onclick="addToBasket('${item.name}', ${item.price})"
                             >
                                 +
                             </button>
@@ -643,84 +770,10 @@ function searchMenu(){
     );
 
 
-    if(!found){
+    if (!found) {
 
         div.innerHTML +=
             "<p>No matching items found.</p>";
-
-    }
-
-}
-
-
-/* =========================
-   POPUP
-========================= */
-
-function showPopup(options){
-
-    const popup =
-        document.getElementById(
-            "popup"
-        );
-
-
-    const list =
-        document.getElementById(
-            "popupOptions"
-        );
-
-
-    if(!popup || !list){
-        return;
-    }
-
-
-    list.innerHTML = "";
-
-
-    options.forEach(option => {
-
-        list.innerHTML += `
-
-        <label
-            style="
-                display:block;
-                margin:10px 0;
-            "
-        >
-
-            <input
-                type="checkbox"
-            >
-
-            ${option}
-
-        </label>
-
-        `;
-
-    });
-
-
-    popup.style.display =
-        "flex";
-
-}
-
-
-function closePopup(){
-
-    const popup =
-        document.getElementById(
-            "popup"
-        );
-
-
-    if(popup){
-
-        popup.style.display =
-            "none";
 
     }
 
@@ -733,7 +786,7 @@ function closePopup(){
 
 window.addEventListener(
     "load",
-    function(){
+    function () {
 
         showCategory("fish");
 
@@ -744,7 +797,7 @@ window.addEventListener(
             );
 
 
-        if(input){
+        if (input) {
 
             const now =
                 new Date();
@@ -757,7 +810,7 @@ window.addEventListener(
 
             input.value =
                 now.toTimeString()
-                    .slice(0,5);
+                    .slice(0, 5);
 
         }
 
@@ -775,15 +828,13 @@ const checkoutButton =
     );
 
 
-if(checkoutButton){
+if (checkoutButton) {
 
     checkoutButton.addEventListener(
         "click",
-        function(){
+        function () {
 
-            if(
-                basket.length === 0
-            ){
+            if (basket.length === 0) {
 
                 alert(
                     "Your basket is empty."
@@ -818,7 +869,7 @@ if(checkoutButton){
                 ).value;
 
 
-            if(name === ""){
+            if (name === "") {
 
                 alert(
                     "Please enter your name."
@@ -829,7 +880,7 @@ if(checkoutButton){
             }
 
 
-            if(phone === ""){
+            if (phone === "") {
 
                 alert(
                     "Please enter your phone number."
@@ -840,7 +891,7 @@ if(checkoutButton){
             }
 
 
-            if(time === ""){
+            if (time === "") {
 
                 alert(
                     "Please choose a collection time."
@@ -854,17 +905,30 @@ if(checkoutButton){
             let order = "";
 
 
-            basket.forEach(
-                item => {
+            basket.forEach(item => {
+
+                order +=
+                    `${item.qty} x ${item.name}`;
+
+
+                if (
+                    item.extras &&
+                    item.extras.length > 0
+                ) {
 
                     order +=
-                        `${item.qty} x ${item.name} - £${(
-                            item.qty *
-                            item.price
-                        ).toFixed(2)}\n`;
+                        `\n   Extras: ${item.extras.join(", ")}`;
 
                 }
-            );
+
+
+                order +=
+                    ` - £${(
+                        item.qty *
+                        item.price
+                    ).toFixed(2)}\n\n`;
+
+            });
 
 
             const total =
@@ -897,21 +961,23 @@ ${notes}
 Collection Only - Pay In Store`;
 
 
-            /* CONFETTI */
+            /*
+               CONFETTI
+            */
 
-            if(
+            if (
                 typeof confetti ===
                 "function"
-            ){
+            ) {
 
                 confetti({
 
-                    particleCount:150,
+                    particleCount: 150,
 
-                    spread:90,
+                    spread: 90,
 
-                    origin:{
-                        y:.6
+                    origin: {
+                        y: 0.6
                     }
 
                 });
@@ -919,10 +985,12 @@ Collection Only - Pay In Store`;
             }
 
 
-            /* OPEN EMAIL */
+            /*
+               OPEN EMAIL
+            */
 
             setTimeout(
-                function(){
+                function () {
 
                     window.location.href =
                         `mailto:Ranvirkaurbassi@gmail.com?subject=Milton Chippy Online Order&body=${encodeURIComponent(body)}`;
