@@ -429,3 +429,26 @@ body{
 #basket.basket-open #closeBasket{
     display:block;
 }
+/* =========================
+   BASKET OPEN / CLOSE FIX
+========================= */
+
+#basket{
+    height:58px;
+    max-height:58px;
+    overflow:hidden;
+}
+
+#basket.basket-open{
+    height:auto !important;
+    max-height:80vh !important;
+    overflow-y:auto !important;
+}
+
+#closeBasket{
+    display:none;
+}
+
+#basket.basket-open #closeBasket{
+    display:block;
+}
