@@ -388,3 +388,28 @@ body{
         font-size:15px;
     }
 }
+/* =========================
+   OPEN BASKET
+========================= */
+
+#basket.basket-open{
+    height:auto;
+    max-height:80vh;
+    overflow-y:auto;
+    background:#1b1b1b;
+}
+
+#basket.basket-open #basketSummary{
+    background:#c40000;
+}
+
+#basket.basket-open h2,
+#basket.basket-open h3,
+#basket.basket-open #basketItems,
+#basket.basket-open #customerName,
+#basket.basket-open #customerPhone,
+#basket.basket-open #collectionTime,
+#basket.basket-open #notes,
+#basket.basket-open #checkout{
+    display:block;
+}
