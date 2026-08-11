@@ -367,3 +367,10 @@ setTimeout(function(){
 }, 1500);    
 
 });
+function openBasket(){
+
+    const basket = document.getElementById("basket");
+
+    basket.classList.toggle("basket-open");
+
+}
