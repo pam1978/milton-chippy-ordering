@@ -374,8 +374,12 @@ function openBasket(){
     basket.classList.toggle("basket-open");
 
 }
-function closeBasket(){
+function closeBasket() {
+    const basket = document.getElementById("basket");
 
-    document.getElementById("basket").classList.remove("basket-open");
+    basket.classList.remove("basket-open");
 
+    basket.style.height = "58px";
+    basket.style.maxHeight = "58px";
+    basket.style.overflow = "hidden";
 }
