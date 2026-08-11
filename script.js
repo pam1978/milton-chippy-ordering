@@ -374,3 +374,8 @@ function openBasket(){
     basket.classList.toggle("basket-open");
 
 }
+function closeBasket(){
+
+    document.getElementById("basket").classList.remove("basket-open");
+
+}
