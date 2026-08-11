@@ -367,11 +367,15 @@ setTimeout(function(){
 }, 1500);    
 
 });
-function openBasket(){
-
+function openBasket() {
     const basket = document.getElementById("basket");
 
-    basket.classList.toggle("basket-open");
+    basket.classList.add("basket-open");
+
+    basket.style.height = "auto";
+    basket.style.maxHeight = "80vh";
+    basket.style.overflowY = "auto";
+}
 
 }
 function closeBasket() {
