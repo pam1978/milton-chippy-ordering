@@ -2,6 +2,25 @@ let basket = [];
 
 
 // ========================================
+// SAUCE LIST
+// ========================================
+
+const sauceList = [
+    "Sweet Chilli",
+    "Hot Chilli",
+    "BBQ",
+    "Mayo",
+    "Garlic Mayo",
+    "Yoghurt Mint",
+    "Ketchup",
+    "Lemon Juice",
+    "Sweetcorn Relish",
+    "Burger Relish",
+    "No Sauce"
+];
+
+
+// ========================================
 // SHOW MENU CATEGORY
 // ========================================
 
@@ -24,7 +43,6 @@ function showCategory(category) {
 
         const itemName = item.name.toLowerCase();
 
-
         if (
             itemName.includes("cod") ||
             itemName.includes("haddock") ||
@@ -32,24 +50,18 @@ function showCategory(category) {
             itemName.includes("scampi") ||
             itemName.includes("fishcake")
         ) {
-
             image = "images/cod.jpg";
-
         }
 
         else if (itemName.includes("burger")) {
-
             image = "images/burger.jpg";
-
         }
 
         else if (
             itemName.includes("kebab") ||
             itemName.includes("doner")
         ) {
-
             image = "images/kebab.jpg";
-
         }
 
         else if (
@@ -59,9 +71,7 @@ function showCategory(category) {
             itemName.includes("sfc") ||
             itemName.includes("goujon")
         ) {
-
             image = "images/chicken.jpg";
-
         }
 
         else if (
@@ -69,15 +79,11 @@ function showCategory(category) {
             itemName.includes("pudding") ||
             itemName.includes("pasty")
         ) {
-
             image = "images/pie.jpg";
-
         }
 
         else if (itemName.includes("milkshake")) {
-
             image = "images/milkshake.jpg";
-
         }
 
         else if (
@@ -86,9 +92,7 @@ function showCategory(category) {
             itemName.includes("cheesecake") ||
             itemName.includes("donut")
         ) {
-
             image = "images/dessert.jpg";
-
         }
 
 
@@ -134,9 +138,7 @@ function showCategory(category) {
 function addToBasket(name, price) {
 
     const existing = basket.find(function(item) {
-
         return item.name === name;
-
     });
 
 
@@ -144,18 +146,13 @@ function addToBasket(name, price) {
 
         existing.qty++;
 
-    }
-
-    else {
+    } else {
 
         basket.push({
 
             name: name,
-
             price: price,
-
             qty: 1,
-
             extras: []
 
         });
@@ -165,15 +162,13 @@ function addToBasket(name, price) {
 
     updateBasket();
 
-
-    // Show the correct choices
     showExtrasForItem(name);
 
 }
 
 
 // ========================================
-// SHOW EXTRAS
+// POPUP RULES
 // ========================================
 
 function showExtrasForItem(name) {
@@ -181,69 +176,102 @@ function showExtrasForItem(name) {
     const itemName = name.toLowerCase();
 
 
-    /*
-    KEBABS / DONER / CHICKEN MEAT /
-    MIXED MEAT / CHIPS
-    */
+    // ------------------------------------
+    // SPECIALS
+    // ------------------------------------
 
-    const meatOrKebabOrChips =
-
-        itemName.includes("kebab") ||
-
-        itemName.includes("doner") ||
-
-        itemName.includes("chicken meat") ||
-
-        itemName.includes("mixed meat") ||
-
-        itemName.includes("chips");
-
-
-    if (meatOrKebabOrChips) {
+    if (
+        itemName.includes("mini cod, sausage") ||
+        itemName.includes("any pie & chips") ||
+        itemName.includes("nuggets & chips") ||
+        itemName.includes("sausage & chips") ||
+        itemName.includes("fishcake & chips") ||
+        itemName.includes("sfc strips & chips") ||
+        itemName.includes("hot wings & chips") ||
+        itemName.includes("cheeseburger & chips") ||
+        itemName.includes("pudding & chips")
+    ) {
 
         showPopup([
 
-            "🥗 Salad",
+            "Salt & Vinegar",
+            "No Salt & Vinegar",
 
-            "No Salad",
-
-            "Sweet Chilli",
-
-            "Hot Chilli",
-
-            "BBQ",
-
-            "Mayo",
-
-            "Garlic Mayo",
-
-            "Yoghurt Mint",
-
-            "Ketchup",
-
-            "Lemon Juice",
-
-            "Sweetcorn Relish",
-
-            "Burger Relish",
-
-            "No Sauce"
+            "Peas",
+            "Curry Sauce",
+            "Gravy"
 
         ]);
 
         return;
-
     }
 
 
-    /*
-    EVERYTHING ELSE
-    */
+    // ------------------------------------
+    // ALL BURGERS
+    // ------------------------------------
+
+    if (itemName.includes("burger")) {
+
+        showPopup([
+
+            "🥗 Salad",
+            "No Salad",
+
+            ...sauceList
+
+        ]);
+
+        return;
+    }
+
+
+    // ------------------------------------
+    // ALL KEBABS / DONER
+    // ------------------------------------
+
+    if (
+        itemName.includes("kebab") ||
+        itemName.includes("doner")
+    ) {
+
+        showPopup([
+
+            "🥗 Salad",
+            "No Salad",
+
+            ...sauceList
+
+        ]);
+
+        return;
+    }
+
+
+    // ------------------------------------
+    // CHIPS
+    // ------------------------------------
+
+    if (itemName.includes("chips")) {
+
+        showPopup([
+
+            "Salt & Vinegar",
+            "No Salt & Vinegar"
+
+        ]);
+
+        return;
+    }
+
+
+    // ------------------------------------
+    // EVERYTHING ELSE
+    // ------------------------------------
 
     showPopup([
 
         "Salt & Vinegar",
-
         "No Salt & Vinegar"
 
     ]);
@@ -252,7 +280,7 @@ function showExtrasForItem(name) {
 
 
 // ========================================
-// POPUP
+// SHOW POPUP
 // ========================================
 
 function showPopup(options) {
@@ -277,9 +305,12 @@ function showPopup(options) {
         <label
             style="
                 display:block;
-                margin:12px 0;
+                padding:12px;
+                margin:6px 0;
                 font-size:17px;
                 cursor:pointer;
+                border-radius:8px;
+                background:#f3f3f3;
             "
         >
 
@@ -287,6 +318,11 @@ function showPopup(options) {
                 type="checkbox"
                 class="extra-option"
                 value="${option}"
+                style="
+                    width:20px;
+                    height:20px;
+                    margin-right:8px;
+                "
             >
 
             ${option}
@@ -316,10 +352,6 @@ function closePopup() {
     if (!popup) return;
 
 
-    /*
-    Save selected extras
-    */
-
     const selected =
         document.querySelectorAll(
             ".extra-option:checked"
@@ -336,13 +368,7 @@ function closePopup() {
     });
 
 
-    /*
-    Add the selected extras
-    to the most recent basket item.
-    */
-
     if (
-        extras.length > 0 &&
         basket.length > 0
     ) {
 
@@ -423,9 +449,7 @@ function removeItem(index) {
 function updateBasket() {
 
     const basketDiv =
-        document.getElementById(
-            "basketItems"
-        );
+        document.getElementById("basketItems");
 
 
     if (!basketDiv) return;
@@ -464,7 +488,7 @@ function updateBasket() {
                 style="
                     color:#ffd700;
                     font-size:14px;
-                    margin-top:5px;
+                    margin-top:6px;
                 "
             >
 
@@ -527,10 +551,8 @@ function updateBasket() {
     const totalElement =
         document.getElementById("total");
 
-
     const basketCount =
         document.getElementById("basketCount");
-
 
     const basketTotal =
         document.getElementById("basketTotal");
@@ -563,7 +585,7 @@ function updateBasket() {
 
 
 // ========================================
-// SEARCH MENU
+// SEARCH
 // ========================================
 
 function searchMenu() {
@@ -745,7 +767,7 @@ function searchMenu() {
 
 
 // ========================================
-// COLLECTION TIME
+// DEFAULT COLLECTION TIME
 // ========================================
 
 function setDefaultCollectionTime() {
@@ -782,9 +804,7 @@ function setDefaultCollectionTime() {
 function setupCheckout() {
 
     const checkout =
-        document.getElementById(
-            "checkout"
-        );
+        document.getElementById("checkout");
 
 
     if (!checkout) return;
