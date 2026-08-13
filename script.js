@@ -967,3 +967,88 @@ window.addEventListener(
 
     }
 );
+// ========================================
+// FLOATING BASKET
+// ========================================
+
+function toggleBasket() {
+
+    const basket =
+        document.getElementById("basket");
+
+    if (!basket) return;
+
+    basket.classList.toggle("basket-open");
+
+}
+
+
+// ========================================
+// CLOSE BASKET
+// ========================================
+
+function closeBasket() {
+
+    const basket =
+        document.getElementById("basket");
+
+    if (!basket) return;
+
+    basket.classList.remove("basket-open");
+
+}
+
+
+// ========================================
+// UPDATE FLOATING BASKET
+// ========================================
+
+function updateFloatingBasket() {
+
+    const count =
+        document.getElementById(
+            "basketCount"
+        );
+
+    const total =
+        document.getElementById(
+            "basketTotal"
+        );
+
+    const floatingCount =
+        document.getElementById(
+            "floatingBasketCount"
+        );
+
+    const floatingTotal =
+        document.getElementById(
+            "floatingBasketTotal"
+        );
+
+
+    if (floatingCount && count) {
+
+        floatingCount.innerText =
+            count.innerText;
+
+    }
+
+
+    if (floatingTotal && total) {
+
+        floatingTotal.innerText =
+            total.innerText;
+
+    }
+
+}
+if (basketTotal) {
+
+    basketTotal.innerText =
+        total.toFixed(2);
+
+}
+
+updateFloatingBasket();
+
+}
