@@ -638,3 +638,119 @@ body{
     }
 
 }
+/* ========================================
+   FLOATING BASKET
+======================================== */
+
+#floatingBasket {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: calc(100% - 20px);
+    max-width: 500px;
+
+    height: 55px;
+
+    background: #c40000;
+    color: white;
+
+    border: none;
+    border-radius: 30px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,.5);
+
+    z-index: 9999;
+
+    cursor: pointer;
+}
+
+#floatingBasket:hover {
+    background: #ff0000;
+}
+
+#floatingBasketCount {
+    background: white;
+    color: #c40000;
+
+    border-radius: 50%;
+
+    padding: 3px 8px;
+
+    margin-left: 5px;
+}
+
+.floatingBasketPrice {
+    margin-left: 8px;
+}
+
+
+/* ========================================
+   BASKET CLOSED
+======================================== */
+
+#basket {
+    position: fixed;
+
+    left: 50%;
+    bottom: 75px;
+
+    transform: translateX(-50%) translateY(120%);
+
+    width: calc(100% - 20px);
+    max-width: 500px;
+
+    max-height: 70vh;
+
+    overflow-y: auto;
+
+    background: #1b1b1b;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    box-shadow: 0 5px 25px rgba(0,0,0,.7);
+
+    z-index: 9998;
+
+    transition: transform .3s ease;
+}
+
+
+/* ========================================
+   BASKET OPEN
+======================================== */
+
+#basket.basket-open {
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+
+}
+
+
+/* ========================================
+   BASKET CLOSE BUTTON
+======================================== */
+
+.basket-close {
+
+    background: #555;
+    color: white;
+
+    border: none;
+
+    padding: 8px 15px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    float: right;
+}
