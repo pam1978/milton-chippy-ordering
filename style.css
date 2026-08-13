@@ -288,200 +288,153 @@ body{
     transform:scale(1.05);
 }
 
-
-/* =========================
+/* ========================================
    FLOATING BASKET
-========================= */
+======================================== */
 
-#basket{
+#basket {
+    position: fixed;
 
-    position:fixed;
+    left: 50%;
+    bottom: 75px;
 
-    left:10px;
-    right:10px;
+    width: calc(100% - 20px);
+    max-width: 500px;
 
-    bottom:8px;
+    max-height: 75vh;
 
-    z-index:2000;
+    overflow-y: auto;
 
-    background:#c40000;
+    background: #1b1b1b;
 
-    color:#fff;
+    border-radius: 15px;
 
-    border-radius:14px;
+    padding: 20px;
 
-    border:2px solid #fff;
+    box-shadow: 0 5px 25px rgba(0,0,0,.7);
 
-    box-shadow:
-        0 4px 20px rgba(0,0,0,.6);
+    z-index: 9998;
 
-    overflow:hidden;
+    transform: translateX(-50%) translateY(120%);
 
-    height:58px;
-
-    transition:.25s;
+    transition: transform .3s ease;
 }
 
 
-/* SMALL CLOSED BAR */
+/* BASKET OPEN */
 
-#basketSummary{
-
-    height:54px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:17px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-}
-
-
-/* FULL BASKET */
-
-#basket.basket-open{
-
-    height:auto;
-
-    max-height:80vh;
-
-    overflow-y:auto;
-
-    background:#1b1b1b;
-}
-
-
-/* OPEN BASKET CONTENT */
-
-#basketContent{
-
-    display:none;
-
-    padding:15px;
-}
-
-#basket.basket-open #basketContent{
-    display:block;
-}
-
-#basket.basket-open #basketSummary{
-    background:#c40000;
+#basket.basket-open {
+    transform:
+        translateX(-50%)
+        translateY(0);
 }
 
 
 /* CLOSE BUTTON */
 
-#closeBasket{
+.basket-close {
+    float: right;
 
-    width:100%;
+    background: #555;
+    color: white;
 
-    background:#333;
+    border: none;
 
-    color:#fff;
+    padding: 8px 15px;
 
-    border:1px solid #c40000;
+    border-radius: 6px;
 
-    padding:10px;
+    font-size: 14px;
 
-    border-radius:8px;
-
-    font-size:16px;
-
-    font-weight:bold;
-
-    margin-bottom:15px;
-
-    cursor:pointer;
+    cursor: pointer;
 }
 
 
-/* BASKET ITEMS */
+/* FLOATING BUTTON */
 
-.basket-item{
-    margin-bottom:15px;
-    padding-bottom:10px;
+#floatingBasket {
 
-    border-bottom:1px solid #444;
-}
+    position: fixed;
 
-.basket-item button{
-    background:#333;
+    left: 50%;
+    bottom: 10px;
 
-    color:#fff;
+    transform: translateX(-50%);
 
-    border:1px solid #c40000;
+    width: calc(100% - 20px);
+    max-width: 500px;
 
-    padding:7px 10px;
+    height: 55px;
 
-    border-radius:6px;
+    background: #c40000;
+    color: white;
 
-    margin-right:4px;
+    border: none;
 
-    cursor:pointer;
-}
+    border-radius: 30px;
 
+    font-size: 18px;
+    font-weight: bold;
 
-/* CUSTOMER DETAILS */
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.5);
 
-#basket input,
-#basket textarea{
+    z-index: 9999;
 
-    width:100%;
-
-    padding:12px;
-
-    margin-top:8px;
-    margin-bottom:8px;
-
-    border:none;
-
-    border-radius:8px;
-
-    font-size:16px;
-}
-
-#basket textarea{
-
-    height:80px;
-
-    resize:none;
+    cursor: pointer;
 }
 
 
-/* CHECKOUT */
+/* BASKET NUMBER */
 
-#checkout{
+#floatingBasketCount {
 
-    width:100%;
+    background: white;
+    color: #c40000;
 
-    padding:15px;
+    border-radius: 50%;
 
-    background:#c40000;
+    padding: 3px 8px;
 
-    color:#fff;
-
-    border:none;
-
-    border-radius:9px;
-
-    font-size:19px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    margin-top:5px;
+    margin-left: 5px;
 }
 
-#checkout:hover{
-    background:#ff0000;
+
+/* BASKET PRICE */
+
+.floatingBasketPrice {
+    margin-left: 8px;
 }
+
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    #basket {
+
+        bottom: 70px;
+
+        width: calc(100% - 12px);
+
+        max-height: 78vh;
+
+        padding: 15px;
+
+    }
+
+    #floatingBasket {
+
+        width: calc(100% - 12px);
+
+        height: 52px;
+
+        bottom: 8px;
+
+    }
+
+}
+
 
 
 /* =========================
