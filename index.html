@@ -11,19 +11,38 @@
 <link rel="stylesheet" href="style.css">
 
 </head>
-<!-- FLOATING BASKET BUTTON -->
 
-<button id="floatingBasket" onclick="toggleBasket()">
+<body>
+
+
+<!-- ========================================
+     FLOATING BASKET BUTTON
+======================================== -->
+
+<button
+    id="floatingBasket"
+    onclick="toggleBasket()"
+    type="button"
+>
 
     🛒
-    <span id="floatingBasketCount">0</span>
+
+    <span id="floatingBasketCount">
+        0
+    </span>
 
     <span class="floatingBasketPrice">
-        £<span id="floatingBasketTotal">0.00</span>
+        £<span id="floatingBasketTotal">
+            0.00
+        </span>
     </span>
 
 </button>
-<body>
+
+
+<!-- ========================================
+     HERO
+======================================== -->
 
 <header class="hero">
 
@@ -35,7 +54,9 @@
             alt="Milton Chippy"
         >
 
-        <h1>Milton Chippy</h1>
+        <h1>
+            Milton Chippy
+        </h1>
 
         <p class="tagline">
             Fresh Fish • Kebabs • Burgers • Gluten Free • Vegan
@@ -48,6 +69,7 @@
         <button
             class="order-btn"
             onclick="showCategory('fish')"
+            type="button"
         >
             🍟 Start Your Order
         </button>
@@ -57,7 +79,9 @@
 </header>
 
 
-<!-- SPECIALS -->
+<!-- ========================================
+     SPECIALS
+======================================== -->
 
 <section class="specials-banner">
 
@@ -69,14 +93,19 @@
         Great value meal deals from Milton Chippy
     </p>
 
-    <button onclick="showCategory('specials')">
+    <button
+        onclick="showCategory('specials')"
+        type="button"
+    >
         View Specials
     </button>
 
 </section>
 
 
-<!-- SEARCH -->
+<!-- ========================================
+     SEARCH
+======================================== -->
 
 <div class="search-area">
 
@@ -90,66 +119,108 @@
 </div>
 
 
-<!-- CATEGORIES -->
+<!-- ========================================
+     CATEGORIES
+======================================== -->
 
 <section id="categories">
 
-    <button onclick="showCategory('fish')">
+    <button
+        onclick="showCategory('fish')"
+        type="button"
+    >
         Fish
     </button>
 
-    <button onclick="showCategory('burgers')">
+    <button
+        onclick="showCategory('burgers')"
+        type="button"
+    >
         Burgers
     </button>
 
-    <button onclick="showCategory('kebabs')">
+    <button
+        onclick="showCategory('kebabs')"
+        type="button"
+    >
         Kebabs
     </button>
 
-    <button onclick="showCategory('chicken')">
+    <button
+        onclick="showCategory('chicken')"
+        type="button"
+    >
         Chicken
     </button>
 
-    <button onclick="showCategory('pies')">
+    <button
+        onclick="showCategory('pies')"
+        type="button"
+    >
         Pies
     </button>
 
-    <button onclick="showCategory('extras')">
+    <button
+        onclick="showCategory('extras')"
+        type="button"
+    >
         Extras
     </button>
 
-    <button onclick="showCategory('specials')">
+    <button
+        onclick="showCategory('specials')"
+        type="button"
+    >
         ⭐ Specials
     </button>
 
-    <button onclick="showCategory('salad')">
+    <button
+        onclick="showCategory('salad')"
+        type="button"
+    >
         🥗 Salads
     </button>
 
-    <button onclick="showCategory('drinks')">
+    <button
+        onclick="showCategory('drinks')"
+        type="button"
+    >
         🥤 Drinks
     </button>
 
-    <button onclick="showCategory('desserts')">
+    <button
+        onclick="showCategory('desserts')"
+        type="button"
+    >
         Desserts
     </button>
 
-    <button onclick="showCategory('glutenfree')">
+    <button
+        onclick="showCategory('glutenfree')"
+        type="button"
+    >
         Gluten Free
     </button>
 
-    <button onclick="showCategory('vegan')">
+    <button
+        onclick="showCategory('vegan')"
+        type="button"
+    >
         Vegan
     </button>
 
 </section>
 
 
-<!-- MENU -->
+<!-- ========================================
+     MENU
+======================================== -->
 
 <section id="menu">
 
-    <h2>Welcome</h2>
+    <h2>
+        Welcome
+    </h2>
 
     <p>
         Select a category above.
@@ -158,84 +229,109 @@
 </section>
 
 
-<!-- BASKET -->
+<!-- ========================================
+     BASKET
+======================================== -->
 
 <section id="basket">
-<button class="basket-close" onclick="closeBasket()">
-    ✕ Close
-</button>
-    <div
-        id="basketSummary"
-        onclick="toggleBasket()"
-    >
+
+    <div id="basketSummary">
 
         🛒 Basket:
-        <span id="basketCount">0</span>
+
+        <span id="basketCount">
+            0
+        </span>
+
         Items |
 
-        £<span id="basketTotal">0.00</span>
+        £<span id="basketTotal">
+            0.00
+        </span>
 
     </div>
 
 
-    <div id="basketContent">
+    <!-- CLOSE BUTTON -->
 
-        <button
-            id="closeBasket"
-            onclick="toggleBasket()"
-        >
-            ✕ Close Basket
-        </button>
-
-        <h2>
-            🛒 Your Order
-        </h2>
-
-        <div id="basketItems"></div>
-
-        <h3>
-            Total £<span id="total">0.00</span>
-        </h3>
+    <button
+        class="basket-close"
+        onclick="closeBasket()"
+        type="button"
+    >
+        ✕ Close Basket
+    </button>
 
 
-        <input
-            id="customerName"
-            type="text"
-            placeholder="Your Name"
-        >
+    <h2>
+        🛒 Your Order
+    </h2>
 
 
-        <input
-            id="customerPhone"
-            type="tel"
-            placeholder="Phone Number"
-        >
+    <!-- ORDER ITEMS -->
+
+    <div id="basketItems"></div>
 
 
-        <input
-            id="collectionTime"
-            type="time"
-        >
+    <!-- TOTAL -->
+
+    <h3>
+
+        Total £<span id="total">
+            0.00
+        </span>
+
+    </h3>
 
 
-        <textarea
-            id="notes"
-            placeholder="Order notes (optional)"
-        ></textarea>
+    <!-- CUSTOMER DETAILS -->
+
+    <input
+        id="customerName"
+        type="text"
+        placeholder="Your Name"
+    >
 
 
-        <button id="checkout">
-            Place Order
-        </button>
+    <input
+        id="customerPhone"
+        type="tel"
+        placeholder="Phone Number"
+    >
 
-    </div>
+
+    <input
+        id="collectionTime"
+        type="time"
+    >
+
+
+    <textarea
+        id="notes"
+        placeholder="Order notes (optional)"
+    ></textarea>
+
+
+    <!-- CHECKOUT -->
+
+    <button
+        id="checkout"
+        type="button"
+    >
+        Place Order
+    </button>
 
 </section>
 
 
-<!-- EXTRAS POPUP -->
+<!-- ========================================
+     EXTRAS POPUP
+======================================== -->
 
-<div id="popup" class="popup">
+<div
+    id="popup"
+    class="popup"
+>
 
     <div class="popup-content">
 
@@ -245,7 +341,10 @@
 
         <div id="popupOptions"></div>
 
-        <button onclick="closePopup()">
+        <button
+            onclick="closePopup()"
+            type="button"
+        >
             Done
         </button>
 
@@ -254,11 +353,23 @@
 </div>
 
 
-<!-- CONFETTI -->
+<!-- ========================================
+     CONFETTI
+======================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
+
+<!-- ========================================
+     MENU DATA
+======================================== -->
+
 <script src="menu.js"></script>
+
+
+<!-- ========================================
+     MAIN JAVASCRIPT
+======================================== -->
 
 <script src="script.js"></script>
 
