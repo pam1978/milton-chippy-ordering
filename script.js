@@ -31,7 +31,11 @@ if (name.includes("fishcake")) {
 if (name.includes("popcorn chicken")) {
     return "images/popcorn chicken.jpeg.JPG";
 }
-if (name.includes("salt") && name.includes("chilli") && name.includes("goujon")) {
+if (
+    name.includes("salt") &&
+    name.includes("chilli") &&
+    name.includes("goujon")
+) {
     return "images/salt&chilli goujon.jpeg.JPG";
 }
 if (name.includes("sfc chicken chunks")) {
@@ -43,7 +47,10 @@ if (name.includes("brownie")) {
 if (name.includes("fudge cake")) {
     return "images/fudge cake.jpeg.JPG";
 }
-if (name.includes("passionfruit") && name.includes("cheese")) {
+if (
+    name.includes("passionfruit") &&
+    name.includes("cheese")
+) {
     return "images/passionfruitcheaeecake.jpeg.JPG";
 }
 if (name.includes("cheesecake")) {
@@ -52,7 +59,9 @@ if (name.includes("cheesecake")) {
 if (name.includes("chip bap")) {
     return "images/chipbap.jpeg.JPG";
 }
-/* FALLBACK PHOTOS */
+/* =========================
+   FALLBACK PHOTOS
+   ========================= */
 if (
     name.includes("cod") ||
     name.includes("haddock") ||
@@ -106,8 +115,8 @@ SHOW MENU CATEGORY
 ========================= */
 
 function showCategory(category) {
-const div = document.getElementById(“menu”);
 
+const div = document.getElementById("menu");
 if (!div) return;
 div.innerHTML = "";
 if (!menu[category]) {
@@ -118,9 +127,9 @@ menu[category].forEach(function(item) {
     const image = getFoodImage(item.name);
     div.innerHTML += `
     <div class="menu-item">
-        <img 
-            src="${image}" 
-            class="food-photo" 
+        <img
+            src="${image}"
+            class="food-photo"
             alt="${item.name}"
         >
         <div class="food-info">
@@ -166,7 +175,9 @@ EXTRA OPTIONS
 function showExtrasForItem(name) {
 
 const itemName = name.toLowerCase();
-/* SPECIALS */
+/* =========================
+   SPECIALS
+   ========================= */
 if (
     itemName.includes("mini cod, sausage") ||
     itemName.includes("any pie & chips") ||
@@ -187,7 +198,9 @@ if (
     ]);
     return;
 }
-/* ALL BURGERS */
+/* =========================
+   ALL BURGERS
+   ========================= */
 if (itemName.includes("burger")) {
     showPopup([
         "🥗 Salad",
@@ -196,7 +209,9 @@ if (itemName.includes("burger")) {
     ]);
     return;
 }
-/* ALL KEBABS / DONER */
+/* =========================
+   ALL KEBABS / DONER
+   ========================= */
 if (
     itemName.includes("kebab") ||
     itemName.includes("doner")
@@ -208,7 +223,9 @@ if (
     ]);
     return;
 }
-/* CHIPS */
+/* =========================
+   CHIPS
+   ========================= */
 if (itemName.includes("chips")) {
     showPopup([
         "Salt & Vinegar",
@@ -216,7 +233,9 @@ if (itemName.includes("chips")) {
     ]);
     return;
 }
-/* EVERYTHING ELSE */
+/* =========================
+   EVERYTHING ELSE
+   ========================= */
 showPopup([
     "Salt & Vinegar",
     "No Salt & Vinegar"
@@ -245,7 +264,7 @@ options.forEach(function(option) {
         border-radius:8px;
         background:#f3f3f3;
     ">
-        <input 
+        <input
             type="checkbox"
             class="extra-option"
             value="${option}"
@@ -270,7 +289,8 @@ function closePopup() {
 
 const popup = document.getElementById("popup");
 if (!popup) return;
-const selected = document.querySelectorAll(".extra-option:checked");
+const selected =
+    document.querySelectorAll(".extra-option:checked");
 const extras = [];
 selected.forEach(function(option) {
     extras.push(option.value);
@@ -321,17 +341,22 @@ UPDATE BASKET
 
 function updateBasket() {
 
-const basketDiv = document.getElementById("basketItems");
+const basketDiv =
+    document.getElementById("basketItems");
 if (!basketDiv) return;
 basketDiv.innerHTML = "";
 let total = 0;
 let count = 0;
 basket.forEach(function(item, index) {
-    const itemTotal = item.price * item.qty;
+    const itemTotal =
+        item.price * item.qty;
     total += itemTotal;
     count += item.qty;
     let extrasHTML = "";
-    if (item.extras && item.extras.length > 0) {
+    if (
+        item.extras &&
+        item.extras.length > 0
+    ) {
         extrasHTML = `
         <div style="
             color:#ffd700;
@@ -349,25 +374,35 @@ basket.forEach(function(item, index) {
         £${item.price.toFixed(2)} × ${item.qty}
         = £${itemTotal.toFixed(2)}
         <br><br>
-        <button onclick="decrease(${index})">−</button>
-        <button onclick="increase(${index})">+</button>
+        <button onclick="decrease(${index})">
+            −
+        </button>
+        <button onclick="increase(${index})">
+            +
+        </button>
         <button onclick="removeItem(${index})">
             Remove
         </button>
         <hr>
     </div>`;
 });
-const totalElement = document.getElementById("total");
-const basketCount = document.getElementById("basketCount");
-const basketTotal = document.getElementById("basketTotal");
+const totalElement =
+    document.getElementById("total");
+const basketCount =
+    document.getElementById("basketCount");
+const basketTotal =
+    document.getElementById("basketTotal");
 if (totalElement) {
-    totalElement.innerText = total.toFixed(2);
+    totalElement.innerText =
+        total.toFixed(2);
 }
 if (basketCount) {
-    basketCount.innerText = count;
+    basketCount.innerText =
+        count;
 }
 if (basketTotal) {
-    basketTotal.innerText = total.toFixed(2);
+    basketTotal.innerText =
+        total.toFixed(2);
 }
 updateFloatingBasket();
 
@@ -379,25 +414,34 @@ SEARCH
 
 function searchMenu() {
 
-const searchInput = document.getElementById("search");
-const div = document.getElementById("menu");
+const searchInput =
+    document.getElementById("search");
+const div =
+    document.getElementById("menu");
 if (!searchInput || !div) return;
-const search = searchInput.value.toLowerCase().trim();
+const search =
+    searchInput.value.toLowerCase().trim();
 if (search === "") {
     showCategory("fish");
     return;
 }
-div.innerHTML = "<h2>Search Results</h2>";
+div.innerHTML =
+    "<h2>Search Results</h2>";
 let found = false;
 Object.keys(menu).forEach(function(category) {
     menu[category].forEach(function(item) {
-        if (item.name.toLowerCase().includes(search)) {
+        if (
+            item.name
+                .toLowerCase()
+                .includes(search)
+        ) {
             found = true;
-            const image = getFoodImage(item.name);
+            const image =
+                getFoodImage(item.name);
             div.innerHTML += `
             <div class="menu-item">
-                <img 
-                    src="${image}" 
+                <img
+                    src="${image}"
                     class="food-photo"
                     alt="${item.name}"
                 >
@@ -415,7 +459,8 @@ Object.keys(menu).forEach(function(category) {
     });
 });
 if (!found) {
-    div.innerHTML += "<p>No matching items found.</p>";
+    div.innerHTML +=
+        "<p>No matching items found.</p>";
 }
 
 }
@@ -426,11 +471,15 @@ DEFAULT COLLECTION TIME
 
 function setDefaultCollectionTime() {
 
-const input = document.getElementById("collectionTime");
+const input =
+    document.getElementById("collectionTime");
 if (!input) return;
 const now = new Date();
-now.setMinutes(now.getMinutes() + 20);
-input.value = now.toTimeString().slice(0, 5);
+now.setMinutes(
+    now.getMinutes() + 20
+);
+input.value =
+    now.toTimeString().slice(0, 5);
 
 }
 
@@ -440,49 +489,74 @@ CHECKOUT
 
 function setupCheckout() {
 
-const checkout = document.getElementById("checkout");
+const checkout =
+    document.getElementById("checkout");
 if (!checkout) return;
-checkout.addEventListener("click", function() {
-    if (basket.length === 0) {
-        alert("Your basket is empty.");
-        return;
-    }
-    const name =
-        document.getElementById("customerName").value.trim();
-    const phone =
-        document.getElementById("customerPhone").value.trim();
-    const time =
-        document.getElementById("collectionTime").value;
-    const notes =
-        document.getElementById("notes").value.trim();
-    if (name === "") {
-        alert("Please enter your name.");
-        return;
-    }
-    if (phone === "") {
-        alert("Please enter your phone number.");
-        return;
-    }
-    if (time === "") {
-        alert("Please choose a collection time.");
-        return;
-    }
-    let order = "";
-    basket.forEach(function(item) {
-        order += `${item.qty} x ${item.name}`;
-        if (
-            item.extras &&
-            item.extras.length > 0
-        ) {
-            order +=
-                `\n   Choices: ${item.extras.join(", ")}`;
+checkout.addEventListener(
+    "click",
+    function() {
+        if (basket.length === 0) {
+            alert(
+                "Your basket is empty."
+            );
+            return;
         }
-        order +=
-            `\n   £${(item.qty * item.price).toFixed(2)}\n\n`;
-    });
-    const total =
-        document.getElementById("total").innerText;
-    const body =
+        const name =
+            document
+                .getElementById("customerName")
+                .value
+                .trim();
+        const phone =
+            document
+                .getElementById("customerPhone")
+                .value
+                .trim();
+        const time =
+            document
+                .getElementById("collectionTime")
+                .value;
+        const notes =
+            document
+                .getElementById("notes")
+                .value
+                .trim();
+        if (name === "") {
+            alert(
+                "Please enter your name."
+            );
+            return;
+        }
+        if (phone === "") {
+            alert(
+                "Please enter your phone number."
+            );
+            return;
+        }
+        if (time === "") {
+            alert(
+                "Please choose a collection time."
+            );
+            return;
+        }
+        let order = "";
+        basket.forEach(function(item) {
+            order +=
+                `${item.qty} x ${item.name}`;
+            if (
+                item.extras &&
+                item.extras.length > 0
+            ) {
+                order +=
+                    `\n   Choices: ${item.extras.join(", ")}`;
+            }
+            order +=
+                `\n   £${(item.qty * item.price).toFixed(2)}\n\n`;
+        });
+        const total =
+            document
+                .getElementById("total")
+                .innerText;
+        const body =
 
 `MILTON CHIPPY ONLINE ORDER
 
@@ -503,9 +577,10 @@ ${notes}
 
 Collection Only - Pay In Store`;
 
-    window.location.href =
-        `mailto:Ranvirkaurbassi@gmail.com?subject=Milton Chippy Online Order&body=${encodeURIComponent(body)}`;
-});
+        window.location.href =
+            `mailto:Ranvirkaurbassi@gmail.com?subject=Milton Chippy Online Order&body=${encodeURIComponent(body)}`;
+    }
+);
 
 }
 
@@ -518,7 +593,9 @@ function toggleBasket() {
 const basketElement =
     document.getElementById("basket");
 if (!basketElement) return;
-basketElement.classList.toggle("basket-open");
+basketElement.classList.toggle(
+    "basket-open"
+);
 
 }
 
@@ -527,7 +604,9 @@ function closeBasket() {
 const basketElement =
     document.getElementById("basket");
 if (!basketElement) return;
-basketElement.classList.remove("basket-open");
+basketElement.classList.remove(
+    "basket-open"
+);
 
 }
 
@@ -560,11 +639,14 @@ if (floatingTotal && total) {
 START WEBSITE
 ========================= */
 
-window.addEventListener(“DOMContentLoaded”, function() {
+window.addEventListener(
+“DOMContentLoaded”,
+function() {
 
-showCategory("fish");
-setDefaultCollectionTime();
-setupCheckout();
-updateFloatingBasket();
+    showCategory("fish");
+    setDefaultCollectionTime();
+    setupCheckout();
+    updateFloatingBasket();
+}
 
-});
+);
